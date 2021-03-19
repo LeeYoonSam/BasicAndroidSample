@@ -108,5 +108,27 @@ detekt {
 - 적용된 린트들을 깃에서 commit 혹은 push를 될 때마다 시켜주기 위해서 깃훅을 사용했습니다.
 
 
+## 버저닝
+-  GitHub 의 공동창업자인 톰 프레스턴 베르나가 만든 [Semantic Versioning](https://semver.org/)을 기반으로 버전 관리
+
+### Semantic Versioning 2.0.0
+
+Given a version number MAJOR.MINOR.PATCH, increment the:
+
+1. MAJOR version when you make incompatible API changes,
+
+2. MINOR version when you add functionality in a backwards compatible manner, and
+
+3. PATCH version when you make backwards compatible bug fixes.
+
+- Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.
+
+
+### 조합 예시
+- 1.0.0.100-snapshot : debug 빌드타입의 1.0.0 버전
+- 1.0.0.101 : release 빌드타입의 1.0.0 버전
+- 버전에서 1.0.0 뒤에 붙는 100~101는 CI에서 붙여주는 빌드넘버로 구성하며 같거나 낮은 버전코드를 사용하는 apk의 경우 설치가 되지 않는 문제가 있으므로 1씩 증가하는 빌드넘버를 뒤에 붙여주고 있습니다.
+
+
 ## 참고
 [혼자서 Android App 개발하기](https://woowabros.github.io/experience/2020/12/31/developing-an-android-app-in-one-person.html)
