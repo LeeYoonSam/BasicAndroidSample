@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<checkstyle version="8.0">
+	<file name="/Users/ys/Documents/BasicAndroidSample/app/src/androidTest/java/com/ys/basicandroid/ExampleInstrumentedTest.kt">
+		<error line="1" column="1" severity="error" message="File must end with a newline (\n)" source="final-newline" />
+		<error line="3" column="1" severity="error" message="Imports must be ordered according to the pattern specified in .editorconfig" source="import-ordering" />
+	</file>
+	<file name="/Users/ys/Documents/BasicAndroidSample/app/src/main/java/com/ys/basicandroid/MainActivity.kt">
+		<error line="1" column="1" severity="error" message="File must end with a newline (\n)" source="final-newline" />
+		<error line="3" column="1" severity="error" message="Imports must be ordered according to the pattern specified in .editorconfig" source="import-ordering" />
+	</file>
+	<file name="/Users/ys/Documents/BasicAndroidSample/app/src/test/java/com/ys/basicandroid/ExampleUnitTest.kt">
+		<error line="1" column="1" severity="error" message="File must end with a newline (\n)" source="final-newline" />
+		<error line="3" column="1" severity="error" message="Imports must be ordered according to the pattern specified in .editorconfig" source="import-ordering" />
+	</file>
+</checkstyle>
