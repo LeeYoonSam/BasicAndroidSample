@@ -26,24 +26,30 @@ object Versions {
     const val constraintlayout = "2.0.4"
 }
 
-object Libs {
-    const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
-    const val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
-    const val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
+object Depends {
+    object Kotlin {
+        const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
+    }
+
+    object AndroidX {
+        const val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
+        const val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
+        const val constraintlayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintlayout}"
+    }
+
     const val material = "com.google.android.material:material:${Versions.material}"
-    const val constraintlayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintlayout}"
-}
 
-object LintLibs {
-    const val ktlint = "com.pinterest:ktlint:${Versions.Lint.ktlint}"
-    const val detektFormatting = "io.gitlab.arturbosch.detekt:detekt-formatting:${Versions.Lint.detektFormatting}"
-}
+    object Lint {
+        const val ktlint = "com.pinterest:ktlint:${Versions.Lint.ktlint}"
+        const val detektFormatting = "io.gitlab.arturbosch.detekt:detekt-formatting:${Versions.Lint.detektFormatting}"
+    }
 
-object TestLibs {
-    const val junit = "junit:junit:${Versions.Test.junit}"
+    object Test {
+        const val junit = "junit:junit:${Versions.Test.junit}"
 
-    object AndroidTest {
-        const val androidJunit = "androidx.test.ext:junit:${Versions.Test.androidJunit}"
-        const val espressoCore = "androidx.test.espresso:espresso-core:${Versions.Test.espressoCore}"
+        object AndroidTest {
+            const val androidJunit = "androidx.test.ext:junit:${Versions.Test.androidJunit}"
+            const val espressoCore = "androidx.test.espresso:espresso-core:${Versions.Test.espressoCore}"
+        }
     }
 }

@@ -59,6 +59,32 @@ task ktlintFormat(type: JavaExec, group: "formatting") {
 }
 ```
 
+```
+KotlinDSL
+
+val ktlint by configurations.creating
+
+tasks.register<JavaExec>("verification") {
+    group = "verification"
+    description = "Check Kotlin code style."
+    classpath = ktlint
+    main = "com.pinterest.ktlint.Main"
+    args("--android", "src/**/*.kt")
+}
+
+tasks.named("check") {
+    dependsOn(ktlint)
+}
+
+/** 스타일 수정 후 자동으로 수정해 줌 */
+tasks.register<JavaExec>("ktlintFormat"){
+    description = "Fix Kotlin code style deviations."
+    classpath = ktlint
+    main = "com.pinterest.ktlint.Main"
+    args("-F", "src/**/*.kt")
+}
+```
+
 - configurations 이 dependencies 보다 위에 선언 되어 있어야 ktlint 적용됨
 
 
@@ -78,6 +104,15 @@ task ktlintFormat(type: JavaExec, group: "formatting") {
 plugins {
     ...
     id "io.gitlab.arturbosch.detekt" version "1.16.0"
+}
+```
+
+```
+KotlinDSL
+
+plugins {
+    ...
+    id("io.gitlab.arturbosch.detekt") version "1.16.0"
 }
 ```
 
@@ -107,6 +142,28 @@ detekt {
 ### Git Hooks
 - 적용된 린트들을 깃에서 commit 혹은 push를 될 때마다 시켜주기 위해서 깃훅을 사용했습니다.
 
+```
+KotlinDSL
+
+/** GitHooks 복사 */
+tasks.register<Copy>("copyGitHooks"){
+    from("${rootDir}/codeConfig/git/git-hooks/") {
+        include("**/*")
+        rename("(.*)", "$1")
+    }
+
+    into("${rootDir}/.git/hooks")
+}
+
+/** GitHooks 설치 */
+tasks.register<Exec>("installGitHooks"){
+    group = "git hooks"
+    workingDir(rootDir)
+    commandLine("chmod")
+    args("-R", "+x", ".git/hooks/")
+    dependsOn("copyGitHooks")
+}
+```
 
 ## 버저닝
 -  GitHub 의 공동창업자인 톰 프레스턴 베르나가 만든 [Semantic Versioning](https://semver.org/)을 기반으로 버전 관리
@@ -122,12 +179,6 @@ Given a version number MAJOR.MINOR.PATCH, increment the:
 3. PATCH version when you make backwards compatible bug fixes.
 
 - Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.
-
-
-### 조합 예시
-- 1.0.0.100-snapshot : debug 빌드타입의 1.0.0 버전
-- 1.0.0.101 : release 빌드타입의 1.0.0 버전
-- 버전에서 1.0.0 뒤에 붙는 100~101는 CI에서 붙여주는 빌드넘버로 구성하며 같거나 낮은 버전코드를 사용하는 apk의 경우 설치가 되지 않는 문제가 있으므로 1씩 증가하는 빌드넘버를 뒤에 붙여주고 있습니다.
 
 
 ## 참고

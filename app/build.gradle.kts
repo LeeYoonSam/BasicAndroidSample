@@ -6,6 +6,15 @@ plugins {
     kotlin("kapt")
 }
 
+/**
+ * Major: 큰변화가 있을때 증가
+ * Minor: 보통의 스프린트 단위로 증가
+ * Patch: 핫픽스 처리시 증가
+ */
+val versionMajor = 1
+val versionMinor = 0
+val versionPatch = 0
+
 android {
     compileSdkVersion(Versions.Android.compileSdk)
 
@@ -13,8 +22,8 @@ android {
         applicationId = "com.ys.basicandroid"
         minSdkVersion(Versions.Android.minSdk)
         targetSdkVersion(Versions.Android.targetSdk)
-        versionCode(Versions.Android.versionCode)
-        versionName(Versions.Android.versionName)
+        versionCode = versionMajor * 10000 + versionMinor * 100 + versionPatch
+        versionName = "$versionMajor.$versionMinor.$versionPatch"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -22,8 +31,10 @@ android {
         getByName("debug") {
             isMinifyEnabled = false
             isDebuggable = true
+            applicationIdSuffix = ".debug"
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
+
         getByName("release") {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
@@ -37,6 +48,11 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    testOptions {
+        unitTests.isReturnDefaultValues = true
+        unitTests.isIncludeAndroidResources = true
     }
 
     kotlinOptions {
@@ -53,7 +69,7 @@ android {
 
 val ktlint by configurations.creating
 
-tasks.register<JavaExec>("ktlint") {
+tasks.register<JavaExec>("verification") {
     group = "verification"
     description = "Check Kotlin code style."
     classpath = ktlint
@@ -98,19 +114,23 @@ detekt {
     buildUponDefaultConfig = true
 }
 
+kapt {
+    useBuildCache = true
+}
+
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation(Libs.kotlin)
-    implementation(Libs.appcompat)
-    implementation(Libs.coreKtx)
-    implementation(Libs.material)
-    implementation(Libs.constraintlayout)
+    implementation(Depends.Kotlin.stdlib)
+    implementation(Depends.AndroidX.appcompat)
+    implementation(Depends.AndroidX.coreKtx)
+    implementation(Depends.AndroidX.constraintlayout)
+    implementation(Depends.material)
 
-    testImplementation(TestLibs.junit)
+    testImplementation(Depends.Test.junit)
 
-    androidTestImplementation(TestLibs.AndroidTest.androidJunit)
-    androidTestImplementation(TestLibs.AndroidTest.espressoCore)
+    androidTestImplementation(Depends.Test.AndroidTest.androidJunit)
+    androidTestImplementation(Depends.Test.AndroidTest.espressoCore)
 
-    ktlint(LintLibs.ktlint)
-    detektPlugins(LintLibs.detektFormatting)
+    ktlint(Depends.Lint.ktlint)
+    detektPlugins(Depends.Lint.detektFormatting)
 }
