@@ -125,8 +125,10 @@ dependencies {
     implementation(Depends.AndroidX.coreKtx)
     implementation(Depends.AndroidX.constraintlayout)
     implementation(Depends.material)
+    implementation(Depends.threetenabp)
 
     testImplementation(Depends.Test.junit)
+    testImplementation(Depends.Test.threetenabp)
 
     androidTestImplementation(Depends.Test.AndroidTest.androidJunit)
     androidTestImplementation(Depends.Test.AndroidTest.espressoCore)

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">BasicAndroidSample</string>
+
+    <string name="format_sns_time_just_now">방금 전</string>
+    <string name="format_sns_time_min">%s분 전</string>
+    <string name="format_sns_time_hour">%s시간 전</string>
+    <string name="format_sns_time_day">%s일 전</string>
 </resources>

@@ -24,6 +24,7 @@ object Versions {
     const val coreKtx = "1.3.2"
     const val material = "1.3.0"
     const val constraintlayout = "2.0.4"
+    const val threetenabp = "1.3.0"
 }
 
 object Depends {
@@ -38,6 +39,7 @@ object Depends {
     }
 
     const val material = "com.google.android.material:material:${Versions.material}"
+    const val threetenabp = "com.jakewharton.threetenabp:threetenabp:${Versions.threetenabp}"
 
     object Lint {
         const val ktlint = "com.pinterest:ktlint:${Versions.Lint.ktlint}"
@@ -46,6 +48,7 @@ object Depends {
 
     object Test {
         const val junit = "junit:junit:${Versions.Test.junit}"
+        const val threetenabp = "org.threeten:threetenbp:${Versions.threetenabp}"
 
         object AndroidTest {
             const val androidJunit = "androidx.test.ext:junit:${Versions.Test.androidJunit}"
