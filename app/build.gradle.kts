@@ -16,12 +16,12 @@ val versionMinor = 0
 val versionPatch = 0
 
 android {
-    compileSdkVersion(Versions.Android.compileSdk)
+    compileSdk = Versions.Android.compileSdk
 
     defaultConfig {
         applicationId = "com.ys.basicandroid"
-        minSdkVersion(Versions.Android.minSdk)
-        targetSdkVersion(Versions.Android.targetSdk)
+        minSdk = Versions.Android.minSdk
+        targetSdk = Versions.Android.targetSdk
         versionCode = versionMajor * 10000 + versionMinor * 100 + versionPatch
         versionName = "$versionMajor.$versionMinor.$versionPatch"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -59,7 +59,7 @@ android {
         jvmTarget = "1.8"
     }
 
-    lintOptions {
+    lint {
         disable(
             "UnsafeExperimentalUsageError",
             "UnsafeExperimentalUsageWarning"
@@ -127,12 +127,9 @@ dependencies {
     implementation(Depends.material)
     implementation(Depends.threetenabp)
 
-    testImplementation(Depends.Test.junit)
-    testImplementation(Depends.Test.threetenabp)
-
-    androidTestImplementation(Depends.Test.AndroidTest.androidJunit)
-    androidTestImplementation(Depends.Test.AndroidTest.espressoCore)
-
     ktlint(Depends.Lint.ktlint)
     detektPlugins(Depends.Lint.detektFormatting)
+
+    addTestDependencies(org.jetbrains.kotlin.config.KotlinCompilerVersion.VERSION)
+    addAndroidTestDependencies(org.jetbrains.kotlin.config.KotlinCompilerVersion.VERSION)
 }

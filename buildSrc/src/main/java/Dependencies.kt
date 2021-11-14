@@ -18,18 +18,22 @@ object Versions {
         const val detektFormatting = "1.16.0"
     }
 
-    const val gradle = "4.1.3"
-    const val kotlin = "1.4.31"
+    const val gradle = "7.0.3"
+    const val kotlin = "1.5.21"
     const val appcompat = "1.2.0"
     const val coreKtx = "1.3.2"
     const val material = "1.3.0"
     const val constraintlayout = "2.0.4"
-    const val threetenabp = "1.3.0"
+    const val threeTenAbp = "1.3.1"
+    const val threeTenBp = "1.5.2"
+    const val coroutine = "1.2.2"
+    const val okhttp = "4.9.2"
 }
 
 object Depends {
     object Kotlin {
         const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
+        const val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutine}"
     }
 
     object AndroidX {
@@ -39,7 +43,7 @@ object Depends {
     }
 
     const val material = "com.google.android.material:material:${Versions.material}"
-    const val threetenabp = "com.jakewharton.threetenabp:threetenabp:${Versions.threetenabp}"
+    const val threetenabp = "com.jakewharton.threetenabp:threetenabp:${Versions.threeTenAbp}"
 
     object Lint {
         const val ktlint = "com.pinterest:ktlint:${Versions.Lint.ktlint}"
@@ -47,12 +51,15 @@ object Depends {
     }
 
     object Test {
-        const val junit = "junit:junit:${Versions.Test.junit}"
-        const val threetenabp = "org.threeten:threetenbp:${Versions.threetenabp}"
-
-        object AndroidTest {
-            const val androidJunit = "androidx.test.ext:junit:${Versions.Test.androidJunit}"
-            const val espressoCore = "androidx.test.espresso:espresso-core:${Versions.Test.espressoCore}"
-        }
+        const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutine}"
+        const val androidJunit = "androidx.test.ext:junit:${Versions.Test.androidJunit}"
+        const val espressoCore = "androidx.test.espresso:espresso-core:${Versions.Test.espressoCore}"
+        const val androidxCore = "androidx.test:core-ktx:1.4.0"
+        const val androidxJunit = "androidx.test.ext:junit-ktx:1.1.3"
+        const val androidxRules = "androidx.test:rules:1.2.0"
+        const val androidxRunner = "androidx.test:runner:1.4.0"
+        const val robolectric = "org.robolectric:robolectric:4.6.1"
+        const val okhttpMockWebServer = "com.squareup.okhttp3:mockwebserver:${Versions.okhttp}"
+        const val threeTenBp = "org.threeten:threetenbp:${Versions.threeTenBp}"
     }
 }
