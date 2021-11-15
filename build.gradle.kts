@@ -6,9 +6,10 @@ buildscript {
     }
 
     dependencies {
-        classpath("com.android.tools.build:gradle:${Versions.gradle}")
-        classpath(kotlin("gradle-plugin", version = Versions.kotlin))
+        classpath(Depends.androidGradlePlugin)
+        classpath(Depends.Kotlin.gradlePlugin)
         classpath(Depends.Kotlin.serializationPlugin)
+        classpath(Depends.Dagger.hiltGradlePlugin)
     }
 }
 

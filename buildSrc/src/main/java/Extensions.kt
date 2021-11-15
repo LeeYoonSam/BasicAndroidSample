@@ -18,10 +18,11 @@ fun DependencyHandler.addTestDependencies(kotlinVersion: String) {
     testImplementation(Depends.Test.androidxJunit)
     testImplementation(Depends.Test.androidxRules)
     testImplementation(Depends.Test.androidxRunner)
-    testImplementation(Depends.Test.coroutines)
+    testImplementation(Depends.Kotlin.Test.coroutineTest)
+    testImplementation(Depends.Kotlin.Test.coroutineCore)
 
     testImplementation(Depends.Test.threeTenBp)
-    testImplementation(Depends.Test.okhttpMockWebServer)
+    testImplementation(Depends.Square.Test.okhttpMockWebServer)
     testImplementation(Depends.Test.robolectric)
 }
 
@@ -32,6 +33,7 @@ fun DependencyHandler.addAndroidTestDependencies(kotlinVersion: String) {
     androidTestImplementation(Depends.Test.androidxJunit)
     androidTestImplementation(Depends.Test.androidxRules)
     androidTestImplementation(Depends.Test.androidxRunner)
+    testImplementation(Depends.Kotlin.Test.coroutineAndroid)
 
-    androidTestImplementation(Depends.Test.okhttpMockWebServer)
+    androidTestImplementation(Depends.Square.Test.okhttpMockWebServer)
 }

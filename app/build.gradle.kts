@@ -5,6 +5,7 @@ plugins {
     kotlin("android.extensions")
     kotlin("kapt")
     id("kotlinx-serialization")
+    id("dagger.hilt.android.plugin")
 }
 
 /**
@@ -121,11 +122,10 @@ kapt {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation(Depends.Kotlin.stdlib)
     implementation(Depends.Kotlin.serialization)
     implementation(Depends.AndroidX.appcompat)
-    implementation(Depends.AndroidX.coreKtx)
-    implementation(Depends.AndroidX.constraintlayout)
+    implementation(Depends.AndroidX.core)
+    implementation(Depends.AndroidX.constraintLayout)
     implementation(Depends.material)
     implementation(Depends.threetenabp)
     implementation(Depends.timber)
@@ -134,6 +134,9 @@ dependencies {
     api(Depends.Square.retrofit)
     implementation(Depends.Square.serialization)
     implementation(Depends.Square.okhttp3_logging)
+
+    implementation(Depends.Dagger.hiltAndroid)
+    kapt(Depends.Dagger.hiltCompiler)
 
     ktlint(Depends.Lint.ktlint)
     detektPlugins(Depends.Lint.detektFormatting)
