@@ -90,5 +90,6 @@ object Depends {
         const val androidxRunner = "androidx.test:runner:1.4.0"
         const val robolectric = "org.robolectric:robolectric:4.6.1"
         const val threeTenBp = "org.threeten:threetenbp:1.5.2"
+        const val mockitoKotlin = "org.mockito.kotlin:mockito-kotlin:4.0.0"
     }
 }

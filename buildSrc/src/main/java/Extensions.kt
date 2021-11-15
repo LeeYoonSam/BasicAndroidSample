@@ -24,6 +24,7 @@ fun DependencyHandler.addTestDependencies(kotlinVersion: String) {
     testImplementation(Depends.Test.threeTenBp)
     testImplementation(Depends.Square.Test.okhttpMockWebServer)
     testImplementation(Depends.Test.robolectric)
+    testImplementation(Depends.Test.mockitoKotlin)
 }
 
 fun DependencyHandler.addAndroidTestDependencies(kotlinVersion: String) {
