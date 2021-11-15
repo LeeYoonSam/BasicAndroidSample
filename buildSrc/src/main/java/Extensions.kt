@@ -12,12 +12,13 @@ fun DependencyHandler.androidTestImplementation(dependencyNotation: Any): Depend
 
 fun DependencyHandler.addTestDependencies(kotlinVersion: String) {
     testImplementation(kotlin("test-junit", kotlinVersion))
-    testImplementation(Depends.Test.coroutines)
 
+    testImplementation(Depends.Test.junit)
     testImplementation(Depends.Test.androidxCore)
     testImplementation(Depends.Test.androidxJunit)
     testImplementation(Depends.Test.androidxRules)
     testImplementation(Depends.Test.androidxRunner)
+    testImplementation(Depends.Test.coroutines)
 
     testImplementation(Depends.Test.threeTenBp)
     testImplementation(Depends.Test.okhttpMockWebServer)

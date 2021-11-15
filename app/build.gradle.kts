@@ -126,6 +126,8 @@ dependencies {
     implementation(Depends.AndroidX.constraintlayout)
     implementation(Depends.material)
     implementation(Depends.threetenabp)
+    implementation(Depends.timber)
+    implementation(Depends.inject)
 
     ktlint(Depends.Lint.ktlint)
     detektPlugins(Depends.Lint.detektFormatting)
