@@ -2,19 +2,20 @@
 buildscript {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 
     dependencies {
         classpath("com.android.tools.build:gradle:${Versions.gradle}")
         classpath(kotlin("gradle-plugin", version = Versions.kotlin))
+        classpath(Depends.Kotlin.serializationPlugin)
     }
 }
 
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 }
 

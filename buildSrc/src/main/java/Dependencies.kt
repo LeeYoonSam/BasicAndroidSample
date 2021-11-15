@@ -34,6 +34,8 @@ object Depends {
     object Kotlin {
         const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
         const val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutine}"
+        const val serialization = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.1"
+        const val serializationPlugin = "org.jetbrains.kotlin:kotlin-serialization:${Versions.kotlin}"
     }
 
     object AndroidX {
@@ -41,11 +43,6 @@ object Depends {
         const val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
         const val constraintlayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintlayout}"
     }
-
-    const val material = "com.google.android.material:material:${Versions.material}"
-    const val threetenabp = "com.jakewharton.threetenabp:threetenabp:${Versions.threeTenAbp}"
-    const val timber = "com.jakewharton.timber:timber:5.0.1"
-    const val inject = "javax.inject:javax.inject:1"
 
     object Lint {
         const val ktlint = "com.pinterest:ktlint:${Versions.Lint.ktlint}"
@@ -65,4 +62,16 @@ object Depends {
         const val okhttpMockWebServer = "com.squareup.okhttp3:mockwebserver:${Versions.okhttp}"
         const val threeTenBp = "org.threeten:threetenbp:${Versions.threeTenBp}"
     }
+
+    object Square {
+        const val okhttp3_logging = "com.squareup.okhttp3:logging-interceptor:4.9.2"
+        const val retrofit = "com.squareup.retrofit2:retrofit:2.9.0"
+        const val serialization =
+            "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0"
+    }
+
+    const val material = "com.google.android.material:material:${Versions.material}"
+    const val threetenabp = "com.jakewharton.threetenabp:threetenabp:${Versions.threeTenAbp}"
+    const val timber = "com.jakewharton.timber:timber:5.0.1"
+    const val inject = "javax.inject:javax.inject:1"
 }

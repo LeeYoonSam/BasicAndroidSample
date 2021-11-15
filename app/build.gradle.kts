@@ -4,6 +4,7 @@ plugins {
     kotlin("android")
     kotlin("android.extensions")
     kotlin("kapt")
+    id("kotlinx-serialization")
 }
 
 /**
@@ -121,6 +122,7 @@ kapt {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(Depends.Kotlin.stdlib)
+    implementation(Depends.Kotlin.serialization)
     implementation(Depends.AndroidX.appcompat)
     implementation(Depends.AndroidX.coreKtx)
     implementation(Depends.AndroidX.constraintlayout)
@@ -128,6 +130,10 @@ dependencies {
     implementation(Depends.threetenabp)
     implementation(Depends.timber)
     implementation(Depends.inject)
+
+    api(Depends.Square.retrofit)
+    implementation(Depends.Square.serialization)
+    implementation(Depends.Square.okhttp3_logging)
 
     ktlint(Depends.Lint.ktlint)
     detektPlugins(Depends.Lint.detektFormatting)
