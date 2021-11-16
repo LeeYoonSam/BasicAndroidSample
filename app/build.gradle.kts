@@ -126,6 +126,7 @@ dependencies {
     implementation(Depends.AndroidX.appcompat)
     implementation(Depends.AndroidX.core)
     implementation(Depends.AndroidX.constraintLayout)
+    implementation(Depends.AndroidX.Activity.activity)
     implementation(Depends.material)
     implementation(Depends.threetenabp)
     implementation(Depends.timber)

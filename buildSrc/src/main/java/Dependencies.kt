@@ -28,7 +28,7 @@ object Depends {
         const val browser = "androidx.browser:browser:1.3.0"
 
         object Lifecycle {
-            const val lifecycleVersion = "2.4.0-beta01"
+            const val lifecycleVersion = "2.4.0"
             const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
             const val viewModelCompose = "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07"
             const val livedata = "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
