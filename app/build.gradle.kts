@@ -127,6 +127,7 @@ dependencies {
     implementation(Depends.AndroidX.core)
     implementation(Depends.AndroidX.constraintLayout)
     implementation(Depends.AndroidX.Activity.activity)
+    implementation(Depends.AndroidX.Navigation.fragment)
     implementation(Depends.material)
     implementation(Depends.threetenabp)
     implementation(Depends.timber)
@@ -138,6 +139,9 @@ dependencies {
 
     implementation(Depends.Dagger.hiltAndroid)
     kapt(Depends.Dagger.hiltCompiler)
+
+    implementation(Depends.Glide.glide)
+    kapt(Depends.Glide.compiler)
 
     ktlint(Depends.Lint.ktlint)
     detektPlugins(Depends.Lint.detektFormatting)

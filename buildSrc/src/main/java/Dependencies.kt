@@ -28,15 +28,23 @@ object Depends {
         const val browser = "androidx.browser:browser:1.3.0"
 
         object Lifecycle {
-            const val lifecycleVersion = "2.4.0"
+            private const val lifecycleVersion = "2.4.0"
             const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
             const val viewModelCompose = "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07"
             const val livedata = "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
         }
+
+        object Navigation {
+            private const val navigationVersion = "2.3.5"
+
+            const val fragment = "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+            const val ui = "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+            const val safeArgs = "androidx.navigation:navigation-safe-args-gradle-plugin:$navigationVersion"
+        }
     }
 
     object Kotlin {
-        const val kotlinVersion = "1.5.21"
+        private const val kotlinVersion = "1.5.21"
         const val coroutineVersion = "1.5.2"
 
         const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
@@ -65,10 +73,16 @@ object Depends {
     }
 
     object Dagger {
-        const val hiltVersion = "2.40.1"
+        private const val hiltVersion = "2.40.1"
         const val hiltAndroid = "com.google.dagger:hilt-android:$hiltVersion"
         const val hiltCompiler = "com.google.dagger:hilt-compiler:$hiltVersion"
         const val hiltGradlePlugin = "com.google.dagger:hilt-android-gradle-plugin:$hiltVersion"
+    }
+
+    object Glide {
+        private const val glideVersion = "4.12.0"
+        const val glide = "com.github.bumptech.glide:glide:$glideVersion"
+        const val compiler = "com.github.bumptech.glide:compiler:$glideVersion"
     }
 
     const val material = "com.google.android.material:material:1.3.0"
