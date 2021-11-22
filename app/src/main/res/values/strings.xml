@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">BasicAndroidSample</string>
 
+    <string name="error_default">인터넷 연결을 확인해주세요.</string>
+
     <string name="format_sns_time_just_now">방금 전</string>
     <string name="format_sns_time_min">%s분 전</string>
     <string name="format_sns_time_hour">%s시간 전</string>
