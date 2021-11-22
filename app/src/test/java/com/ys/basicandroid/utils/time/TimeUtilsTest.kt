@@ -253,4 +253,11 @@ class TimeUtilsTest {
 
         assertEquals(actual, before1MonthOverExpected)
     }
+
+    @Test
+    fun `zonedDateTime 형식으로 시간을 받으면 localDate 으로 변환`() {
+        val zonedDateString = "2010-09-20T00:00:00.000+09:00"
+        val localDateTime = TimeUtils.zonedDateTimeToLocalDate(zonedDateString)
+        assertEquals("2010-09-20", localDateTime)
+    }
 }

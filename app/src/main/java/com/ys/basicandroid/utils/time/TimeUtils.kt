@@ -4,6 +4,7 @@ import org.threeten.bp.Instant
 import org.threeten.bp.ZoneId
 import org.threeten.bp.ZonedDateTime
 import org.threeten.bp.format.DateTimeFormatter
+import timber.log.Timber
 
 object TimeUtils {
     private const val SEC = 60
@@ -131,5 +132,18 @@ object TimeUtils {
                 formatter = formatter
             )
         }
+    }
+
+    /**
+     * zonedDateTime 형식의 날짜를 받으면 LocalDate 로 변환
+     *
+     * @param zonedDateTime "2010-09-20T00:00:00.000+09:00"
+     * @return [String] "2010-09-20"
+     */
+    fun zonedDateTimeToLocalDate(zonedDateTime: String) = try {
+        ZonedDateTime.parse(zonedDateTime).toLocalDate().toString()
+    } catch (e: Exception) {
+        Timber.e(e)
+        ""
     }
 }
