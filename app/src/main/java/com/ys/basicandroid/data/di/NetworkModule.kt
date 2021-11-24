@@ -2,6 +2,7 @@ package com.ys.basicandroid.data.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.ys.basicandroid.data.api.GithubApi
+import com.ys.basicandroid.data.api.KakaoApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -53,22 +54,17 @@ object NetworkModule {
             .create(GithubApi::class.java)
     }
 
-    // @Provides
-    // @Singleton
-    // fun provideRetrofit(
-    //     okHttpClient: OkHttpClient,
-    //     converterFactory: Converter.Factory
-    // ): Retrofit = Retrofit.Builder()
-    //     .baseUrl("https://raw.githubusercontent.com/")
-    //     .addConverterFactory(converterFactory)
-    //     .client(okHttpClient)
-    //     .build()
-    //
-    // @Provides
-    // @Singleton
-    // fun provideGithubApi(
-    //     retrofit: Retrofit
-    // ): GithubApi {
-    //     return retrofit.create(GithubApi::class.java)
-    // }
+    @Provides
+    @Singleton
+    fun provideKakaoApi(
+        okHttpClient: OkHttpClient,
+        converterFactory: Converter.Factory
+    ): KakaoApi {
+        return Retrofit.Builder()
+            .baseUrl("https://dapi.kakao.com")
+            .addConverterFactory(converterFactory)
+            .client(okHttpClient)
+            .build()
+            .create(KakaoApi::class.java)
+    }
 }
