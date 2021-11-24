@@ -27,6 +27,8 @@ android {
         versionCode = versionMajor * 10000 + versionMinor * 100 + versionPatch
         versionName = "$versionMajor.$versionMinor.$versionPatch"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "KAKAO_REST_API_AUTHORIZATION", "\"KakaoAK 7a7ffc08770c2956edc43bc7425a6676\"")
     }
 
     buildTypes {

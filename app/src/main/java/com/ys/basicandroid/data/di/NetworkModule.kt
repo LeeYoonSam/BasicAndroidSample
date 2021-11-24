@@ -1,5 +1,6 @@
 package com.ys.basicandroid.data.di
 
+import com.ys.basicandroid.BuildConfig
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.ys.basicandroid.data.api.GithubApi
 import com.ys.basicandroid.data.api.KakaoApi
@@ -7,9 +8,11 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Named
 import javax.inject.Singleton
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
+import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -21,9 +24,23 @@ import retrofit2.Retrofit
 object NetworkModule {
 
     @Provides
+    @Named("defaultHeaders")
     @Singleton
-    fun provideOkHttpClient(): OkHttpClient =
+    fun provideHeaders(): Interceptor = Interceptor {
+        it.run {
+            proceed(
+                request().newBuilder().apply {
+                    addHeader("Authorization", BuildConfig.KAKAO_REST_API_AUTHORIZATION)
+                }.build()
+            )
+        }
+    }
+
+    @Provides
+    @Singleton
+    fun provideOkHttpClient(@Named("defaultHeaders") headers: Interceptor): OkHttpClient =
         OkHttpClient.Builder()
+            .addInterceptor(headers)
             .addInterceptor(
                 HttpLoggingInterceptor().apply {
                     level = HttpLoggingInterceptor.Level.BODY
