@@ -2,6 +2,11 @@
     <string name="app_name">BasicAndroidSample</string>
 
     <string name="error_default">인터넷 연결을 확인해주세요.</string>
+    <string name="hint_search">책 이름을 입력하세요</string>
+    <string name="empty_book">검색된 책이 없습니다.</string>
+
+    <string name="format_price">%,d원</string>
+    <string name="format_publisher_release">%s | %s</string>
 
     <string name="format_sns_time_just_now">방금 전</string>
     <string name="format_sns_time_min">%s분 전</string>
