@@ -7,9 +7,9 @@ import com.ys.basicandroid.data.api.KakaoApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ActivityComponent
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Named
-import javax.inject.Singleton
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import okhttp3.Interceptor
@@ -25,7 +25,6 @@ object NetworkModule {
 
     @Provides
     @Named("defaultHeaders")
-    @Singleton
     fun provideHeaders(): Interceptor = Interceptor {
         it.run {
             proceed(
@@ -37,7 +36,6 @@ object NetworkModule {
     }
 
     @Provides
-    @Singleton
     fun provideOkHttpClient(@Named("defaultHeaders") headers: Interceptor): OkHttpClient =
         OkHttpClient.Builder()
             .addInterceptor(headers)
@@ -50,7 +48,6 @@ object NetworkModule {
 
     @OptIn(ExperimentalSerializationApi::class)
     @Provides
-    @Singleton
     fun provideConvert(): Converter.Factory {
         return Json {
             ignoreUnknownKeys = true
@@ -58,7 +55,6 @@ object NetworkModule {
     }
 
     @Provides
-    @Singleton
     fun provideGithubApi(
         okHttpClient: OkHttpClient,
         converterFactory: Converter.Factory
@@ -72,7 +68,6 @@ object NetworkModule {
     }
 
     @Provides
-    @Singleton
     fun provideKakaoApi(
         okHttpClient: OkHttpClient,
         converterFactory: Converter.Factory
