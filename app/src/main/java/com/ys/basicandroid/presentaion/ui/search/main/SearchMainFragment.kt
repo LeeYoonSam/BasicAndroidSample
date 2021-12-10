@@ -1,16 +1,17 @@
-package com.ys.basicandroid.presentaion.ui.search
+package com.ys.basicandroid.presentaion.ui.search.main
 
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.OnScrollListener
 import com.ys.basicandroid.R
 import com.ys.basicandroid.databinding.FragmentSearchMainBinding
 import com.ys.basicandroid.presentaion.base.ui.BaseFragment
-import com.ys.basicandroid.presentaion.ui.search.adapter.SearchMainAdapter
-import com.ys.basicandroid.presentaion.ui.search.viewmodel.SearchMainViewModel
+import com.ys.basicandroid.presentaion.ui.search.main.adapter.SearchMainAdapter
+import com.ys.basicandroid.presentaion.ui.search.main.viewmodel.SearchMainViewModel
 import com.ys.basicandroid.utils.decoration.DividerItemDecoration
 import com.ys.basicandroid.utils.ext.clearItemDecoration
 import com.ys.basicandroid.utils.ext.hideKeyboard
@@ -30,7 +31,8 @@ class SearchMainFragment : BaseFragment<FragmentSearchMainBinding>(R.layout.frag
 
     private val searchAdapter: SearchMainAdapter by lazy {
         SearchMainAdapter { bookInfo ->
-            showToast("책 클릭시 상세화면 연결")
+            val direction = SearchMainFragmentDirections.actionSearchMainFragmentToBookDetailFragment(bookInfo)
+            findNavController().navigate(direction)
         }
     }
 

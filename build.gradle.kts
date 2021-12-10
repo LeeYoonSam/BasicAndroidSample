@@ -10,6 +10,7 @@ buildscript {
         classpath(Depends.Kotlin.gradlePlugin)
         classpath(Depends.Kotlin.serializationPlugin)
         classpath(Depends.Dagger.hiltGradlePlugin)
+        classpath(Depends.AndroidX.Navigation.safeArgs)
     }
 }
 

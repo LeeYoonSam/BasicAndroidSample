@@ -1,4 +1,4 @@
-package com.ys.basicandroid.presentaion.ui.search.viewmodel
+package com.ys.basicandroid.presentaion.ui.search.main.viewmodel
 
 import androidx.databinding.ObservableBoolean
 

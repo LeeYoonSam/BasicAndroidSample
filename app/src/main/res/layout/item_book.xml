@@ -10,7 +10,7 @@
 
         <variable
             name="itemHandler"
-            type="com.ys.basicandroid.presentaion.ui.search.adapter.SearchMainAdapter.ItemHandler" />
+            type="com.ys.basicandroid.presentaion.ui.search.main.adapter.SearchMainAdapter.ItemHandler" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

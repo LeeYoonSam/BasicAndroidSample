@@ -1,4 +1,4 @@
-package com.ys.basicandroid.presentaion.ui.search.viewmodel
+package com.ys.basicandroid.presentaion.ui.search.main.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,6 +9,7 @@ import com.ys.basicandroid.domain.book.SearchBooksInfoUseCase.Params
 import com.ys.basicandroid.domain.model.BookInfo
 import com.ys.basicandroid.domain.model.PagingMeta
 import com.ys.basicandroid.presentaion.base.ui.BaseViewModel
+import com.ys.basicandroid.presentaion.ui.search.main.viewmodel.SearchMainStringProvider.Code.ERROR_DEFAULT
 import com.ys.basicandroid.utils.ext.orFalse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.net.UnknownHostException
@@ -64,7 +65,7 @@ class SearchMainViewModel @Inject constructor(
 
                 is Result.Error -> {
                     if (result.exception is UnknownHostException) {
-                        _error.value = stringProvider.getString(SearchMainStringProvider.Code.ERROR_DEFAULT)
+                        _error.value = stringProvider.getString(ERROR_DEFAULT)
                     }
 
                     initSearchInfo()

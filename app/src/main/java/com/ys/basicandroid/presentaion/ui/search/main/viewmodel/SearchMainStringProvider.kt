@@ -1,8 +1,9 @@
-package com.ys.basicandroid.presentaion.ui.search.viewmodel
+package com.ys.basicandroid.presentaion.ui.search.main.viewmodel
 
 import android.content.Context
 import com.ys.basicandroid.R
 import com.ys.basicandroid.presentaion.res.IStringResourceGetter
+import com.ys.basicandroid.presentaion.ui.search.main.viewmodel.SearchMainStringProvider.Code.ERROR_DEFAULT
 import javax.inject.Inject
 
 class SearchMainStringProvider @Inject constructor(private val context: Context):
@@ -14,7 +15,7 @@ class SearchMainStringProvider @Inject constructor(private val context: Context)
 
     fun getString(code: Code): String {
         return when (code) {
-            Code.ERROR_DEFAULT -> getStringRes(R.string.error_default)
+            ERROR_DEFAULT -> getStringRes(R.string.error_default)
         }
     }
 

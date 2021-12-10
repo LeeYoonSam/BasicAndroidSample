@@ -1,4 +1,4 @@
-package com.ys.basicandroid.presentaion.ui.search.adapter
+package com.ys.basicandroid.presentaion.ui.search.main.adapter
 
 import com.ys.basicandroid.R
 import com.ys.basicandroid.BR
