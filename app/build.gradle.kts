@@ -1,12 +1,14 @@
+import groovy.lang.ExpandoMetaClassCreationHandle.disable
+
 plugins {
     id("com.android.application")
-    id("io.gitlab.arturbosch.detekt") version "1.16.0"
     kotlin("android")
     kotlin("android.extensions")
     kotlin("kapt")
     id("kotlinx-serialization")
     id("dagger.hilt.android.plugin")
     id("androidx.navigation.safeargs.kotlin")
+	id("io.gitlab.arturbosch.detekt") version "1.16.0"
 }
 
 /**
@@ -64,12 +66,12 @@ android {
         jvmTarget = "1.8"
     }
 
-    lint {
-        disable(
-            "UnsafeExperimentalUsageError",
-            "UnsafeExperimentalUsageWarning"
-        )
-    }
+    // lint {
+    //     disable(
+    //         "UnsafeExperimentalUsageError",
+    //         "UnsafeExperimentalUsageWarning"
+    //     )
+    // }
 }
 
 val ktlint by configurations.creating

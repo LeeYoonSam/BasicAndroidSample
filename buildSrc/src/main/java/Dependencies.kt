@@ -1,22 +1,22 @@
 object Versions {
     object Android {
-        const val compileSdk = 30
+        const val compileSdk = 31
         const val minSdk = 23
-        const val targetSdk = 30
+        const val targetSdk = 31
         const val versionCode = 1
         const val versionName = "1.0"
     }
 }
 
 object Depends {
-    const val androidGradlePlugin = "com.android.tools.build:gradle:7.0.3"
+    const val androidGradlePlugin = "com.android.tools.build:gradle:7.1.3"
 
     object AndroidX {
         const val core = "androidx.core:core-ktx:1.6.0"
         const val appcompat = "androidx.appcompat:appcompat:1.3.1"
 
         object Activity {
-            private const val version = "1.3.1"
+            private const val version = "1.5.1"
             const val activity = "androidx.activity:activity-ktx:$version"
             const val compose = "androidx.activity:activity-compose:$version"
         }
@@ -35,7 +35,7 @@ object Depends {
         }
 
         object Navigation {
-            private const val navigationVersion = "2.3.5"
+            private const val navigationVersion = "2.5.1"
 
             const val fragment = "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
             const val ui = "androidx.navigation:navigation-ui-ktx:$navigationVersion"
@@ -44,12 +44,12 @@ object Depends {
     }
 
     object Kotlin {
-        private const val kotlinVersion = "1.5.21"
-        const val coroutineVersion = "1.5.2"
+        private const val kotlinVersion = "1.6.21"
+        const val coroutineVersion = "1.6.4"
 
         const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         const val coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineVersion"
-        const val dateTime = "org.jetbrains.kotlinx:kotlinx-datetime:0.2.1"
+        const val dateTime = "org.jetbrains.kotlinx:kotlinx-datetime:0.4.0"
         const val serialization = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.1"
         const val serializationPlugin = "org.jetbrains.kotlin:kotlin-serialization:$kotlinVersion"
 
@@ -61,7 +61,7 @@ object Depends {
     }
 
     object Square {
-        const val okHttpVersion = "4.9.2"
+        const val okHttpVersion = "4.10.0"
         const val okhttp3_logging = "com.squareup.okhttp3:logging-interceptor:${okHttpVersion}"
         const val retrofit = "com.squareup.retrofit2:retrofit:2.9.0"
         const val serialization =
@@ -73,14 +73,14 @@ object Depends {
     }
 
     object Dagger {
-        private const val hiltVersion = "2.40.1"
+        private const val hiltVersion = "2.43.2"
         const val hiltAndroid = "com.google.dagger:hilt-android:$hiltVersion"
         const val hiltCompiler = "com.google.dagger:hilt-compiler:$hiltVersion"
         const val hiltGradlePlugin = "com.google.dagger:hilt-android-gradle-plugin:$hiltVersion"
     }
 
     object Glide {
-        private const val glideVersion = "4.12.0"
+        private const val glideVersion = "4.13.2"
         const val glide = "com.github.bumptech.glide:glide:$glideVersion"
         const val compiler = "com.github.bumptech.glide:compiler:$glideVersion"
     }
@@ -91,8 +91,8 @@ object Depends {
     const val inject = "javax.inject:javax.inject:1"
 
     object Lint {
-        const val ktlint = "com.pinterest:ktlint:0.41.0"
-        const val detektFormatting = "io.gitlab.arturbosch.detekt:detekt-formatting:1.16.0"
+        const val ktlint = "com.pinterest:ktlint:0.47.0"
+        const val detektFormatting = "io.gitlab.arturbosch.detekt:detekt-formatting:1.21.0"
     }
 
     object Test {
