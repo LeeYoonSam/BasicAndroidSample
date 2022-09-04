@@ -169,13 +169,9 @@ tasks.register<Exec>("installGitHooks"){
 -  GitHub 의 공동창업자인 톰 프레스턴 베르나가 만든 [Semantic Versioning](https://semver.org/)을 기반으로 버전 관리
 
 ### Semantic Versioning 2.0.0
-
 Given a version number MAJOR.MINOR.PATCH, increment the:
-
 1. MAJOR version when you make incompatible API changes,
-
 2. MINOR version when you add functionality in a backwards compatible manner, and
-
 3. PATCH version when you make backwards compatible bug fixes.
 
 - Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.
@@ -214,6 +210,23 @@ Given a version number MAJOR.MINOR.PATCH, increment the:
     - 데이터 계층의 책임은 CRUD 작업(생성, 검색, 업데이트, 삭제 – 모든 시스템 이벤트)과 같은 비즈니스 로직 실행 결과를 전달하는 것입니다.
     - 이 계층은 Repository나 DataSource와 같은 다양한 전략으로 실행 책임을 나누어 설계할 수 있습니다.
 
+---
+
+## 브랜치 전략
+### GitLab flow 사용
+- master 브랜치는 production 브랜치
+- production브랜치는 master 이상 권한만 push 가능
+- developer 권한 사용자는 master 브랜치에서 신규 브랜치를 추가
+- 신규 브랜치에서 소스를 commit 하고 push
+- merge request를 생성하여 master 브랜치로 merge 요청
+- merge_request를 생성하기 전에는 master 브랜치를 rebase 해서 병합 커밋을 방지
+- master 권한 사용자는 developer 사용자와 함께 리뷰 진행 후 master 브랜치로 merge
+- 테스트가 필요하다면 master에서 procution 브랜치로 merge하기 전에 pre-production 브랜치에서 테스트
+
+---
+
 ## 참고
 [혼자서 Android App 개발하기](https://woowabros.github.io/experience/2020/12/31/developing-an-android-app-in-one-person.html)
 [Architecture Components](https://getstream.io/blog/android-developer-roadmap-part-3/#architecture-components)
+[Introduction to GitLab Flow ALL TIERS](https://docs.gitlab.com/ee/topics/gitlab_flow.html)
+[Git branch 전략(Git-Flow, Github-Flow, Gitlab-Flow)](https://velog.io/@kw2577/Git-branch-%EC%A0%84%EB%9E%B5)
