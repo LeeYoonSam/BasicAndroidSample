@@ -2,6 +2,7 @@ package com.ys.basicandroid.domain.model
 
 import android.os.Parcelable
 import androidx.databinding.ObservableBoolean
+import com.ys.basicandroid.presentaion.ui.search.main.adapter.multitype.ISearchItemViewModel
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
@@ -18,6 +19,8 @@ data class BookInfo(
     val title: String,
     val url: String,
     val bookLike: Boolean = false
-): Parcelable {
+): Parcelable, ISearchItemViewModel {
+	override val itemId = getViewTypeName() + title
+
     val isLike by lazy { ObservableBoolean(bookLike) }
 }

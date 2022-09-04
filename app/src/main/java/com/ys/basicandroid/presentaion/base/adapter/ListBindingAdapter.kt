@@ -1,27 +1,35 @@
 package com.ys.basicandroid.presentaion.base.adapter
 
-import android.view.LayoutInflater
-import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 
-abstract class ListBindingAdapter<T>(
-    diffCallback: DiffUtil.ItemCallback<T>
-) : ListAdapter<T, DataBindingViewHolder<T>>(diffCallback) {
+abstract class ListBindingAdapter<VT : Enum<VT>, VM : IViewTypeGetter<VT>>(
+	diffCallback: DiffUtil.ItemCallback<VM>
+) : ListAdapter<VM, BaseBindingViewHolder<VM, ViewDataBinding>>(diffCallback) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataBindingViewHolder<T> {
-        val layoutInflater = LayoutInflater.from(parent.context)
-        val binding =
-            DataBindingUtil.inflate<ViewDataBinding>(layoutInflater, viewType, parent, false)
-        return DataBindingViewHolder(binding)
-    }
+	override fun onBindViewHolder(
+		viewHolder: BaseBindingViewHolder<VM, ViewDataBinding>,
+		position: Int
+	) {
+		currentList.getOrNull(position)?.let {
+			viewHolder.onBind(it, position)
+		}
+	}
 
-    final override fun onBindViewHolder(holder: DataBindingViewHolder<T>, position: Int) {
-        viewBindViewHolder(holder, position)
-        holder.bind(getItem(position))
-    }
+	override fun getItemViewType(position: Int): Int {
+		return currentList[position].getViewTypeOrdinal()
+	}
 
-    protected open fun viewBindViewHolder(holder: DataBindingViewHolder<T>, position: Int) {}
+	fun addItems(newItems: List<VM>) {
+		submitList(newItems)
+	}
+
+	fun clear() {
+		submitList(emptyList())
+	}
+
+	fun removeItem(item: VM) {
+		currentList.remove(item)
+	}
 }

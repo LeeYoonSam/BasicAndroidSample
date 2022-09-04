@@ -1,15 +1,16 @@
-package com.ys.basicandroid.presentaion.ui.search.main.adapter
+package com.ys.basicandroid.presentaion.ui.search.main.adapter.simple
 
-import com.ys.basicandroid.R
 import com.ys.basicandroid.BR
+import com.ys.basicandroid.R
 import com.ys.basicandroid.domain.model.BookInfo
 import com.ys.basicandroid.presentaion.base.adapter.DataBindingViewHolder
 import com.ys.basicandroid.presentaion.base.adapter.ItemDiffCallback
-import com.ys.basicandroid.presentaion.base.adapter.ListBindingAdapter
+import com.ys.basicandroid.presentaion.base.adapter.SimpleListBindingAdapter
 
+// ViewType 이 하나일때 적용 예
 internal class SearchMainAdapter (
     private val itemHandler: ItemHandler
-) : ListBindingAdapter<BookInfo>(
+) : SimpleListBindingAdapter<BookInfo>(
     ItemDiffCallback(
         onItemsTheSame = { old, new ->
             old.title == new.title &&
@@ -19,14 +20,6 @@ internal class SearchMainAdapter (
         },
         onContentsTheSame = { old, new -> old == new }
     )) {
-
-    fun addBooks(newBooks: List<BookInfo>) {
-        submitList(newBooks)
-    }
-
-    fun clear() {
-        submitList(emptyList())
-    }
 
     override fun getItemViewType(position: Int): Int {
         return R.layout.item_book

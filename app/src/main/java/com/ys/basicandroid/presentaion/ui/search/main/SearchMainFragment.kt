@@ -10,7 +10,8 @@ import androidx.recyclerview.widget.RecyclerView.OnScrollListener
 import com.ys.basicandroid.R
 import com.ys.basicandroid.databinding.FragmentSearchMainBinding
 import com.ys.basicandroid.presentaion.base.ui.BaseFragment
-import com.ys.basicandroid.presentaion.ui.search.main.adapter.SearchMainAdapter
+import com.ys.basicandroid.presentaion.ui.search.main.adapter.multitype.SearchMainMultiTypeAdapter
+import com.ys.basicandroid.presentaion.ui.search.main.adapter.simple.SearchMainAdapter
 import com.ys.basicandroid.presentaion.ui.search.main.viewmodel.SearchMainViewModel
 import com.ys.basicandroid.utils.decoration.DividerItemDecoration
 import com.ys.basicandroid.utils.ext.clearItemDecoration
@@ -35,6 +36,13 @@ class SearchMainFragment : BaseFragment<FragmentSearchMainBinding>(R.layout.frag
             findNavController().navigate(direction)
         }
     }
+
+	private val searchMultiTypeAdapter: SearchMainMultiTypeAdapter by lazy {
+		SearchMainMultiTypeAdapter { bookInfo ->
+			val direction = SearchMainFragmentDirections.actionSearchMainFragmentToBookDetailFragment(bookInfo)
+			findNavController().navigate(direction)
+		}
+	}
 
     private val endlessRecyclerScrollListener = EndlessRecyclerScrollListener {
         searchViewModel.requestSearchBooks(true)
@@ -92,13 +100,9 @@ class SearchMainFragment : BaseFragment<FragmentSearchMainBinding>(R.layout.frag
     }
 
     override fun setObserve() {
-        searchViewModel.books.observe(viewLifecycleOwner) { books ->
-            searchAdapter.addBooks(books)
-        }
-
         searchViewModel.run {
             books.observe(viewLifecycleOwner) { books ->
-                searchAdapter.addBooks(books)
+                searchAdapter.addItems(books)
             }
 
             error.observe(viewLifecycleOwner) { errorMessage ->
