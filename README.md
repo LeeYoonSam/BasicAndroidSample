@@ -180,6 +180,40 @@ Given a version number MAJOR.MINOR.PATCH, increment the:
 
 - Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.
 
+---
+
+## 🛠 Tech Sacks & Open Source Libraries
+- 비동기 처리 [Coroutines](https://github.com/Kotlin/kotlinx.coroutines)
+- Jetpack
+    - Compose: 기본 UI 구축을 위한 Android의 최신 툴킷입니다.
+    - Lifecycle: 수명 주기 변경 사항을 관찰합니다.
+    - ViewModel: UI 관련 데이터 홀더 및 수명 주기 인식.
+- Hilt: 의존성 주입
+- Glide: 이미지 로딩 라이브러리
+- Retrofit2 & OkHttp3: REST API 네트워크 데이터를 구성합니다.
+- Timber: 유틸리티를 제공하는 작고 확장 가능한 API가 있는 로거.
+
+---
+
+## 🏛️ Architecture
+
+### 아키텍처의 레이어 및 경계
+- User Interface Layer: 
+    - UI 레이어의 책임은 화면에 애플리케이션 데이터를 렌더링하는 것입니다.
+    - 사용자 상호 작용 또는 네트워크 및 데이터베이스와의 외부 통신으로 인해 애플리케이션 데이터가 변경될 때마다 UI 요소를 업데이트해야 합니다.
+
+- Presentation Layer:
+    - 프레젠테이션 계층의 책임은 UI 계층과 도메인 계층 간의 데이터 변경 사항을 상호 작용하고 알리는 것입니다.
+    - 구성 변경 시 데이터를 보유하고 복원합니다.
+
+- Domain Layer:
+    - 도메인 계층은 복잡한 비즈니스 로직을 추상화하고 재사용성을 향상시키는 역할을 합니다.
+    - 이 계층은 복잡한 애플리케이션 데이터를 프레젠테이션 계층에 적합한 유형으로 변환하고 유사한 비즈니스 로직을 단일 기능으로 그룹화합니다.
+
+- Data Layer:
+    - 데이터 계층의 책임은 CRUD 작업(생성, 검색, 업데이트, 삭제 – 모든 시스템 이벤트)과 같은 비즈니스 로직 실행 결과를 전달하는 것입니다.
+    - 이 계층은 Repository나 DataSource와 같은 다양한 전략으로 실행 책임을 나누어 설계할 수 있습니다.
 
 ## 참고
 [혼자서 Android App 개발하기](https://woowabros.github.io/experience/2020/12/31/developing-an-android-app-in-one-person.html)
+[Architecture Components](https://getstream.io/blog/android-developer-roadmap-part-3/#architecture-components)
