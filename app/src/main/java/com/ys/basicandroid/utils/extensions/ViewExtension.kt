@@ -1,4 +1,4 @@
-package com.ys.basicandroid.utils.ext
+package com.ys.basicandroid.utils.extensions
 
 import android.view.LayoutInflater
 import android.view.View

@@ -2,11 +2,11 @@ package com.ys.basicandroid.presentaion.base.ui.search.main.viewmodel
 
 import com.ys.basicandroid.data.model.Document
 import com.ys.basicandroid.data.model.Meta
-import com.ys.basicandroid.domain.model.BookInfo
+import com.ys.basicandroid.domain.model.BookInfoItemViewModel
 import com.ys.basicandroid.domain.model.PagingMeta
 import com.ys.basicandroid.presentaion.ClickEventNotifier
-import com.ys.basicandroid.utils.ext.orFalse
-import com.ys.basicandroid.utils.ext.orZero
+import com.ys.basicandroid.utils.extensions.orFalse
+import com.ys.basicandroid.utils.extensions.orZero
 import com.ys.basicandroid.utils.time.TimeUtils
 
 object SearchViewModelMapper {
@@ -18,11 +18,11 @@ object SearchViewModelMapper {
     fun getBooksInfo(
 	    documents: List<Document>?,
 	    clickEventNotifier: ClickEventNotifier
-    ) : List<BookInfo> {
+    ) : List<BookInfoItemViewModel> {
         return documents
             .orEmpty()
             .mapTo(mutableListOf()) { document ->
-                BookInfo(
+                BookInfoItemViewModel(
                     authors = document.authors.orEmpty(),
                     translators = document.translators.orEmpty(),
                     contents = document.contents.orEmpty(),

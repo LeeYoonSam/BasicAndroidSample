@@ -1,6 +1,6 @@
 package com.ys.basicandroid.presentaion.ui.search.main.adapter.multitype
 
-import com.ys.basicandroid.domain.model.BookInfo
+import com.ys.basicandroid.domain.model.BookInfoItemViewModel
 import com.ys.basicandroid.presentaion.base.adapter.IViewTypeGetter
 
 interface ISearchItemViewModel : IViewTypeGetter<SearchViewType> {
@@ -9,7 +9,7 @@ interface ISearchItemViewModel : IViewTypeGetter<SearchViewType> {
 
 	override fun getViewType(): SearchViewType {
 		return when (this) {
-			is BookInfo -> SearchViewType.ITEM
+			is BookInfoItemViewModel -> SearchViewType.ITEM
 			else -> SearchViewType.ITEM
 		}
 	}

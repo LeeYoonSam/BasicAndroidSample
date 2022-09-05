@@ -11,16 +11,16 @@ import com.ys.basicandroid.R
 import com.ys.basicandroid.databinding.FragmentSearchMainBinding
 import com.ys.basicandroid.domain.entity.ActionEntity
 import com.ys.basicandroid.domain.entity.ClickEntity
+import com.ys.basicandroid.domain.model.BookInfoItemViewModel
 import com.ys.basicandroid.presentaion.base.ui.BaseFragment
-import com.ys.basicandroid.presentaion.ui.search.main.adapter.multitype.SearchMainMultiTypeAdapter
 import com.ys.basicandroid.presentaion.ui.search.main.adapter.simple.SearchMainAdapter
-import com.ys.basicandroid.presentaion.ui.search.main.event.SearchMainClickEntity.ClickTitle
+import com.ys.basicandroid.presentaion.ui.search.main.event.SearchMainClickEntity.ClickBookInfo
 import com.ys.basicandroid.presentaion.ui.search.main.viewmodel.SearchMainViewModel
 import com.ys.basicandroid.utils.decoration.DividerItemDecoration
-import com.ys.basicandroid.utils.ext.clearItemDecoration
-import com.ys.basicandroid.utils.ext.hideKeyboard
-import com.ys.basicandroid.utils.ext.observeHandledEvent
-import com.ys.basicandroid.utils.ext.showToast
+import com.ys.basicandroid.utils.extensions.clearItemDecoration
+import com.ys.basicandroid.utils.extensions.hideKeyboard
+import com.ys.basicandroid.utils.extensions.observeHandledEvent
+import com.ys.basicandroid.utils.extensions.showToast
 import com.ys.basicandroid.utils.recyclerview.EndlessRecyclerScrollListener
 import dagger.hilt.android.AndroidEntryPoint
 import java.net.UnknownHostException
@@ -35,19 +35,8 @@ class SearchMainFragment : BaseFragment<FragmentSearchMainBinding>(R.layout.frag
 
     private val searchViewModel by viewModels<SearchMainViewModel>()
 
-    private val searchAdapter: SearchMainAdapter by lazy {
-        SearchMainAdapter { bookInfo ->
-            val direction = SearchMainFragmentDirections.actionSearchMainFragmentToBookDetailFragment(bookInfo)
-            findNavController().navigate(direction)
-        }
-    }
-
-	private val searchMultiTypeAdapter: SearchMainMultiTypeAdapter by lazy {
-		SearchMainMultiTypeAdapter { bookInfo ->
-			val direction = SearchMainFragmentDirections.actionSearchMainFragmentToBookDetailFragment(bookInfo)
-			findNavController().navigate(direction)
-		}
-	}
+    private val searchAdapter = SearchMainAdapter()
+    // private val searchAdapter = SearchMainMultiTypeAdapter()
 
     private val endlessRecyclerScrollListener = EndlessRecyclerScrollListener {
         searchViewModel.requestSearchBooks(true)
@@ -132,8 +121,8 @@ class SearchMainFragment : BaseFragment<FragmentSearchMainBinding>(R.layout.frag
 
 	private fun handleSelectEvent(entity: ClickEntity) {
 		when (entity) {
-			is ClickTitle -> {
-				showToast("타이틀 클릭 테스트")
+			is ClickBookInfo -> {
+				moveBookInfoDetail(entity.bookInfoItemViewModel)
 			}
 		}
 	}
@@ -141,6 +130,11 @@ class SearchMainFragment : BaseFragment<FragmentSearchMainBinding>(R.layout.frag
     private fun showToast(message: String) {
         requireContext().showToast(message)
     }
+
+	private fun moveBookInfoDetail(bookInfoItemViewModel: BookInfoItemViewModel) {
+		val direction = SearchMainFragmentDirections.actionSearchMainFragmentToBookDetailFragment(bookInfoItemViewModel)
+		findNavController().navigate(direction)
+	}
 
     /**
      * 검색어 입력시 1초 딜레이 후 자동으로 검색

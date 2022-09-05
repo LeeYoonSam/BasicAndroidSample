@@ -1,4 +1,4 @@
-package com.ys.basicandroid.utils.ext
+package com.ys.basicandroid.utils.extensions
 
 import androidx.recyclerview.widget.RecyclerView
 

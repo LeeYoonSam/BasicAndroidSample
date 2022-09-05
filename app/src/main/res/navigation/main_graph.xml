@@ -22,6 +22,6 @@
         tools:layout="@layout/fragment_book_detail">
         <argument
             android:name="bookInfo"
-            app:argType="com.ys.basicandroid.domain.model.BookInfo" />
+            app:argType="com.ys.basicandroid.domain.model.BookInfoItemViewModel" />
     </fragment>
 </navigation>

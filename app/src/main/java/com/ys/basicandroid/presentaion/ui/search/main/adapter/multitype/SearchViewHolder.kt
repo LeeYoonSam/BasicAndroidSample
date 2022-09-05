@@ -4,7 +4,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
 import com.ys.basicandroid.presentaion.base.adapter.BaseBindingViewHolder
-import com.ys.basicandroid.presentaion.ui.search.main.adapter.multitype.SearchMainMultiTypeAdapter.ItemHandler
 
 abstract class SearchViewHolder<VM : ISearchItemViewModel, B : ViewDataBinding>(
 	itemView: View
@@ -14,11 +13,10 @@ abstract class SearchViewHolder<VM : ISearchItemViewModel, B : ViewDataBinding>(
 		@Suppress("UNCHECKED_CAST")
 		fun getViewHolder(
 			parent: ViewGroup,
-			viewType: SearchViewType,
-			itemHandler: ItemHandler
+			viewType: SearchViewType
 		): SearchViewHolder<ISearchItemViewModel, ViewDataBinding> {
 			return when (viewType) {
-				SearchViewType.ITEM -> SearchItemViewHolder.newInstance(parent, itemHandler)
+				SearchViewType.ITEM -> SearchItemViewHolder.newInstance(parent)
 			} as SearchViewHolder<ISearchItemViewModel, ViewDataBinding>
 		}
 	}

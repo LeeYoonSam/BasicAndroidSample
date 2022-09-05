@@ -1,4 +1,4 @@
-package com.ys.basicandroid.utils.ext
+package com.ys.basicandroid.utils.extensions
 
 import android.app.Activity
 import android.content.Context

@@ -3,24 +3,21 @@ package com.ys.basicandroid.presentaion.ui.search.main.adapter.multitype
 import android.view.View
 import android.view.ViewGroup
 import com.ys.basicandroid.R.layout
-import com.ys.basicandroid.databinding.ItemBookMultiTypeBinding
-import com.ys.basicandroid.domain.model.BookInfo
-import com.ys.basicandroid.presentaion.ui.search.main.adapter.multitype.SearchMainMultiTypeAdapter.ItemHandler
-import com.ys.basicandroid.utils.ext.createView
+import com.ys.basicandroid.databinding.ItemBookBinding
+import com.ys.basicandroid.domain.model.BookInfoItemViewModel
+import com.ys.basicandroid.utils.extensions.createView
 
 class SearchItemViewHolder(
 	itemView: View,
-	private val itemHandler: ItemHandler
-) : SearchViewHolder<BookInfo, ItemBookMultiTypeBinding>(itemView) {
+) : SearchViewHolder<BookInfoItemViewModel, ItemBookBinding>(itemView) {
     companion object {
-        fun newInstance(parent: ViewGroup, itemHandler: ItemHandler) =
-            SearchItemViewHolder(parent.createView(layout.item_book_multi_type), itemHandler)
+        fun newInstance(parent: ViewGroup) =
+            SearchItemViewHolder(parent.createView(layout.item_book))
     }
 
-    override fun onBind(item: BookInfo, position: Int) {
+    override fun onBind(item: BookInfoItemViewModel, position: Int) {
         binding?.run {
             this.item = item
-	        this.itemHandler = this@SearchItemViewHolder.itemHandler
             executePendingBindings()
         }
     }

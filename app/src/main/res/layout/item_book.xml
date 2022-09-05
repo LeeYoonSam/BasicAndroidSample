@@ -6,18 +6,14 @@
     <data>
         <variable
             name="item"
-            type="com.ys.basicandroid.domain.model.BookInfo"/>
-
-        <variable
-            name="itemHandler"
-            type="com.ys.basicandroid.presentaion.ui.search.main.adapter.simple.SearchMainAdapter.ItemHandler" />
+            type="com.ys.basicandroid.domain.model.BookInfoItemViewModel"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:onClick="@{() -> itemHandler.clickEvent(item)}"
-        android:padding="10dp">
+        android:padding="10dp"
+        app:onDebouncedClick="@{item::clickBookInfo}">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_book"
@@ -40,7 +36,6 @@
             android:textColor="@color/black"
             android:textSize="14sp"
             android:textStyle="bold"
-            android:onClick="@{() -> item.clickTitle()}"
             app:layout_constraintBottom_toTopOf="@id/tv_book_description"
             app:layout_constraintEnd_toStartOf="@id/tv_book_date"
             app:layout_constraintStart_toEndOf="@id/iv_book"

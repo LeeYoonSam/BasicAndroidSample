@@ -1,19 +1,19 @@
 package com.ys.basicandroid.presentaion.ui.search.detail.viewmodel
 
 import androidx.databinding.ObservableField
-import com.ys.basicandroid.domain.model.BookInfo
+import com.ys.basicandroid.domain.model.BookInfoItemViewModel
 import com.ys.basicandroid.presentaion.base.ui.BaseViewModel
 
 class BookDetailViewModel : BaseViewModel() {
 
-    val bookInfo =  ObservableField<BookInfo>()
+    val bookInfoItemViewModel =  ObservableField<BookInfoItemViewModel>()
 
-    fun setBookInfo(bookInfo: BookInfo) {
-        this.bookInfo.set(bookInfo)
+    fun setBookInfo(bookInfoItemViewModel: BookInfoItemViewModel) {
+        this.bookInfoItemViewModel.set(bookInfoItemViewModel)
     }
 
     fun onClickLike() {
-        bookInfo.get()?.isLike?.let {
+        bookInfoItemViewModel.get()?.isLike?.let {
             if (it.get()) {
                 likeOff()
             } else {
@@ -23,10 +23,10 @@ class BookDetailViewModel : BaseViewModel() {
     }
 
     private fun likeOn() {
-        bookInfo.get()?.isLike?.set(true)
+        bookInfoItemViewModel.get()?.isLike?.set(true)
     }
 
     private fun likeOff() {
-        bookInfo.get()?.isLike?.set(false)
+        bookInfoItemViewModel.get()?.isLike?.set(false)
     }
 }

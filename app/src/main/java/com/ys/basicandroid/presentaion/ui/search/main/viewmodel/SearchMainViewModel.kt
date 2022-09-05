@@ -6,10 +6,10 @@ import androidx.lifecycle.viewModelScope
 import com.ys.basicandroid.domain.Result
 import com.ys.basicandroid.domain.book.SearchBooksInfoUseCase
 import com.ys.basicandroid.domain.book.SearchBooksInfoUseCase.Params
-import com.ys.basicandroid.domain.model.BookInfo
+import com.ys.basicandroid.domain.model.BookInfoItemViewModel
 import com.ys.basicandroid.domain.model.PagingMeta
 import com.ys.basicandroid.presentaion.base.ui.BaseViewModel
-import com.ys.basicandroid.utils.ext.orFalse
+import com.ys.basicandroid.utils.extensions.orFalse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.launch
@@ -22,8 +22,8 @@ class SearchMainViewModel @Inject constructor(
 
     val viewState = SearchMainViewState()
 
-    private val _books = MutableLiveData<List<BookInfo>>(emptyList())
-    val books: LiveData<List<BookInfo>> = _books
+    private val _books = MutableLiveData<List<BookInfoItemViewModel>>(emptyList())
+    val books: LiveData<List<BookInfoItemViewModel>> = _books
 
     private var query: String = ""
     private var meta = PagingMeta(false)

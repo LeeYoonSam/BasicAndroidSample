@@ -9,7 +9,7 @@ import kotlinx.android.parcel.Parcelize
 import kotlinx.android.parcel.RawValue
 
 @Parcelize
-data class BookInfo(
+data class BookInfoItemViewModel(
     val authors: List<String>,
     val translators: List<String>,
     val contents: String,
@@ -28,9 +28,9 @@ data class BookInfo(
 
     val isLike by lazy { ObservableBoolean(bookLike) }
 
-	fun clickTitle() {
+	fun clickBookInfo() {
 		clickEventNotifier.notifyClickEvent(
-			entity = SearchMainClickEntity.ClickTitle
+			entity = SearchMainClickEntity.ClickBookInfo(this)
 		)
 	}
 }

@@ -1,4 +1,4 @@
-package com.ys.basicandroid.utils.ext
+package com.ys.basicandroid.utils.extensions
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
