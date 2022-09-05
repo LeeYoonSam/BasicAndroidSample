@@ -1,4 +1,4 @@
-package com.ys.basicandroid.presentaion.base.ui.search.main.viewmodel
+package com.ys.basicandroid.presentaion.ui.search.main.viewmodel
 
 import com.ys.basicandroid.data.model.Document
 import com.ys.basicandroid.data.model.Meta
