@@ -12,13 +12,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     private val viewModel by viewModels<MainViewModel>()
 
-    override fun setObserve() {
-        viewModel.contributors.observe(this) {
-            Timber.d("contributors: $it")
-        }
-    }
+	override fun initObserve() {
+		viewModel.contributors.observe(this) {
+			Timber.d("contributors: $it")
+		}
+	}
 
-    override fun setInit() {
+	override fun initData() {
         viewModel.getContributors()
     }
 }

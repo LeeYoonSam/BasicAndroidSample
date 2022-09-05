@@ -4,6 +4,7 @@ import com.ys.basicandroid.data.model.Document
 import com.ys.basicandroid.data.model.Meta
 import com.ys.basicandroid.domain.model.BookInfo
 import com.ys.basicandroid.domain.model.PagingMeta
+import com.ys.basicandroid.presentaion.ClickEventNotifier
 import com.ys.basicandroid.utils.ext.orFalse
 import com.ys.basicandroid.utils.ext.orZero
 import com.ys.basicandroid.utils.time.TimeUtils
@@ -14,7 +15,10 @@ object SearchViewModelMapper {
      *
      * @param documents API 호출 후 전달되는 [Document] 정보
      */
-    fun getBooksInfo(documents: List<Document>?) : List<BookInfo> {
+    fun getBooksInfo(
+	    documents: List<Document>?,
+	    clickEventNotifier: ClickEventNotifier
+    ) : List<BookInfo> {
         return documents
             .orEmpty()
             .mapTo(mutableListOf()) { document ->
@@ -30,7 +34,8 @@ object SearchViewModelMapper {
                     thumbnail = document.thumbnail.orEmpty(),
                     title = document.title.orEmpty(),
                     url = document.url.orEmpty(),
-                    bookLike = false
+                    bookLike = false,
+	                clickEventNotifier = clickEventNotifier
                 )
             }
     }

@@ -1,32 +1,45 @@
 package com.ys.basicandroid.presentaion.base.ui
 
 import androidx.databinding.ObservableBoolean
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.ys.basicandroid.domain.entity.ActionEntity
+import com.ys.basicandroid.domain.entity.ClickEntity
+import com.ys.basicandroid.presentaion.ClickActionEventNotifier
+import com.ys.basicandroid.presentaion.event.BaseEvent
+import com.ys.basicandroid.presentaion.event.IBaseEvent
 
-abstract class BaseViewModel : ViewModel() {
+abstract class BaseViewModel : ViewModel(), ClickActionEventNotifier {
 
-    val isLoading = ObservableBoolean(false)
+	protected open val _event: BaseEvent = BaseEvent()
+	open val event: IBaseEvent
+		get() = _event
 
-    val _error: MutableLiveData<String> = MutableLiveData()
-    val error: LiveData<String> = _error
+	val isLoading = ObservableBoolean(false)
 
-    override fun onCleared() {
-        super.onCleared()
+	protected open fun handleActionEvent(entity: ActionEntity) {}
 
-        hideLoading()
-    }
+	override fun notifyActionEvent(entity: ActionEntity) {
+		handleActionEvent(entity)
+		_event._action.setHandledValue(entity)
+	}
 
-    fun showLoading() {
-        isLoading.set(true)
-    }
+	protected open fun handleClickEvent(entity: ClickEntity) {}
+	override fun notifyClickEvent(entity: ClickEntity) {
+		handleClickEvent(entity)
+		_event._click.setHandledValue(entity)
+	}
 
-    fun hideLoading() {
-        isLoading.set(false)
-    }
+	override fun onCleared() {
+		super.onCleared()
 
-    fun dispatchError(message: String) {
-        _error.value = message
-    }
+		hideLoading()
+	}
+
+	fun showLoading() {
+		isLoading.set(true)
+	}
+
+	fun hideLoading() {
+		isLoading.set(false)
+	}
 }

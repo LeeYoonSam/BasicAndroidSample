@@ -38,8 +38,8 @@ abstract class BaseFragment<T : ViewDataBinding>(
         super.onViewCreated(view, savedInstanceState)
 
         setBind()
-        setObserve()
-        setInit()
+        initObserve()
+        initData()
         registerNetworkCallback()
     }
 
@@ -78,7 +78,7 @@ abstract class BaseFragment<T : ViewDataBinding>(
 
     open fun setBind() {}
 
-    open fun setObserve() {}
+    open fun initObserve() {}
 
-    open fun setInit() {}
+    open fun initData() {}
 }

@@ -15,7 +15,10 @@ class SearchRepositoryImpl @Inject constructor(
             page = param.page
         )
 
-        val books = SearchViewModelMapper.getBooksInfo(searchBooks.documents.orEmpty())
+        val books = SearchViewModelMapper.getBooksInfo(
+	        documents = searchBooks.documents.orEmpty(),
+	        clickEventNotifier = param.clickEventNotifier
+        )
         val pagingMeta = SearchViewModelMapper.getPagingMeta(searchBooks.meta, param.page)
 
         return SearchBooksData(

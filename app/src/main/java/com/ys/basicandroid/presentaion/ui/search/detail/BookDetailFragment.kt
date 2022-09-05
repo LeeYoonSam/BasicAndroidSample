@@ -11,7 +11,7 @@ class BookDetailFragment : BaseFragment<FragmentBookDetailBinding>(R.layout.frag
     private val bookDetailArgs by navArgs<BookDetailFragmentArgs>()
     private val bookDetailViewModel by viewModels<BookDetailViewModel>()
 
-    override fun setInit() {
+    override fun initData() {
         bookDetailViewModel.setBookInfo(bookDetailArgs.bookInfo)
     }
 
