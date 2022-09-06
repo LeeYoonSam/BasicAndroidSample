@@ -23,12 +23,6 @@ inline fun <reified T: Activity> Context.startActivity(
 
 fun Int.dp2px() = (this * Resources.getSystem().displayMetrics.density).toInt()
 
-fun View.hideKeyboard(): Boolean {
-    clearFocus()
-    val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-    return imm.hideSoftInputFromWindow(windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
-}
-
 fun Context.showToast(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 }
