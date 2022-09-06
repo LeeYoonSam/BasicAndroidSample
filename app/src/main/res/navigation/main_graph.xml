@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/searchMainFragment"
-        android:name="com.ys.basicandroid.presentaion.ui.search.main.SearchMainFragment"
+        android:name="com.ys.basicandroid.presentaion.ui.search.main.view.SearchMainFragment"
         android:label="SearchMainFragment">
         <action
             android:id="@+id/action_searchMainFragment_to_bookDetailFragment"

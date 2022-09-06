@@ -1,4 +1,4 @@
-package com.ys.basicandroid.presentaion.ui.main
+package com.ys.basicandroid.presentaion.ui.main.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

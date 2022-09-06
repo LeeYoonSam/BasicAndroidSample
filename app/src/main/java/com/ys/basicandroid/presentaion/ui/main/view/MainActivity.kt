@@ -1,9 +1,10 @@
-package com.ys.basicandroid.presentaion.ui.main
+package com.ys.basicandroid.presentaion.ui.main.view
 
 import androidx.activity.viewModels
 import com.ys.basicandroid.R
 import com.ys.basicandroid.databinding.ActivityMainBinding
 import com.ys.basicandroid.presentaion.base.ui.BaseActivity
+import com.ys.basicandroid.presentaion.ui.main.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 

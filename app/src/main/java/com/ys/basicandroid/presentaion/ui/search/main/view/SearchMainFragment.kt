@@ -1,4 +1,4 @@
-package com.ys.basicandroid.presentaion.ui.search.main
+package com.ys.basicandroid.presentaion.ui.search.main.view
 
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
