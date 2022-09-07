@@ -4,6 +4,7 @@ import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.OnScrollListener
@@ -18,13 +19,13 @@ import com.ys.basicandroid.presentaion.ui.search.main.event.SearchMainClickEntit
 import com.ys.basicandroid.presentaion.ui.search.main.viewmodel.SearchMainViewModel
 import com.ys.basicandroid.utils.decoration.DividerItemDecoration
 import com.ys.basicandroid.utils.extensions.clearItemDecoration
+import com.ys.basicandroid.utils.extensions.getAutoHideKeyboardFocusChangeListener
 import com.ys.basicandroid.utils.extensions.hideKeyboard
 import com.ys.basicandroid.utils.extensions.observeHandledEvent
 import com.ys.basicandroid.utils.extensions.showToast
 import com.ys.basicandroid.utils.recyclerview.EndlessRecyclerScrollListener
 import dagger.hilt.android.AndroidEntryPoint
 import java.net.UnknownHostException
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -52,19 +53,23 @@ class SearchMainFragment : BaseFragment<FragmentSearchMainBinding>(R.layout.frag
 
             viewModel = searchViewModel
 
-            etSearch.setWatcher()
-            etSearch.searchBooks { query ->
-                isClickSearch = true
+	        etSearch.run {
+		        setWatcher()
+		        searchBooks { query ->
+			        isClickSearch = true
 
-                clearAndSearch(query)
-            }
+			        clearAndSearch(query)
+		        }
+
+		        onFocusChangeListener = getAutoHideKeyboardFocusChangeListener()
+	        }
 
             rvBooks.run {
                 clearItemDecoration()
 
                 adapter = searchAdapter
                 addItemDecoration(DividerItemDecoration(requireContext()))
-                addOnScrollListener(onScrollListener())
+                addOnScrollListener(scrollListener)
                 addOnScrollListener(endlessRecyclerScrollListener)
             }
         }
@@ -81,14 +86,14 @@ class SearchMainFragment : BaseFragment<FragmentSearchMainBinding>(R.layout.frag
         }
     }
 
-    private fun onScrollListener() = object : OnScrollListener() {
+    private val scrollListener = object : OnScrollListener() {
         override fun onScrollStateChanged(
             recyclerView: RecyclerView,
             newState: Int
         ) {
             super.onScrollStateChanged(recyclerView, newState)
             if (newState == RecyclerView.SCROLL_STATE_DRAGGING) {
-                binding.etSearch.hideKeyboard()
+                binding.etSearch.clearFocus()
             }
         }
     }
@@ -149,7 +154,7 @@ class SearchMainFragment : BaseFragment<FragmentSearchMainBinding>(R.layout.frag
 
             previousSearchText = searchText
 
-            CoroutineScope(Dispatchers.Main).launch {
+	        lifecycleScope.launch {
 
                 delay(1000)  //debounce timeOut
                 if (searchText != previousSearchText) {
@@ -181,7 +186,6 @@ class SearchMainFragment : BaseFragment<FragmentSearchMainBinding>(R.layout.frag
                     return@setOnEditorActionListener true
                 }
 
-                view.hideKeyboard()
                 callback.invoke(query)
 
                 true

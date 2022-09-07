@@ -11,7 +11,6 @@ fun ViewGroup.createView(@LayoutRes layoutId: Int): View =
 	LayoutInflater.from(context).inflate(layoutId, this, false)
 
 fun View.hideKeyboard(): Boolean {
-	clearFocus()
 	val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
 	return imm.hideSoftInputFromWindow(windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
 }
@@ -29,7 +28,7 @@ fun View.showKeyboard() {
 /**
  * Focus 를 잃으면 키보드 숨기는 OnFocusChangeListener 를 반환
  */
-fun View.getAutoHideKeyboardFocusChangeListener() = View.OnFocusChangeListener { view, hasFocus ->
+fun getAutoHideKeyboardFocusChangeListener() = View.OnFocusChangeListener { view, hasFocus ->
 	if (!hasFocus) {
 		view.hideKeyboard()
 	}
