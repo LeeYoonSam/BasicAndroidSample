@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.res.Resources
 import android.graphics.Insets
 import android.graphics.Rect
+import android.net.Uri
 import android.os.Build
 import android.util.DisplayMetrics
 import android.util.Size
@@ -93,3 +94,5 @@ fun Int.dp2px() = (this * Resources.getSystem().displayMetrics.density).toInt()
 fun Context.showToast(message: String) { 
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 }
+
+fun Context.parseUriPackageName() = Uri.parse("package:${packageName}") ?: null
