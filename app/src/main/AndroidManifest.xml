@@ -14,8 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BasicAndroidSample">
-        <activity android:name=".presentaion.ui.main.view.MainActivity"
-            android:exported="true">
+        <activity
+            android:name=".presentation.ui.main.view.MainActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,7 +25,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".presentaion.base.ui.PermissionCheckActivity"/>
+        <activity android:name=".presentation.base.ui.PermissionCheckActivity"/>
     </application>
 
 </manifest>

@@ -2,9 +2,9 @@ package com.ys.basicandroid.domain.model
 
 import android.os.Parcelable
 import androidx.databinding.ObservableBoolean
-import com.ys.basicandroid.presentaion.ClickEventNotifier
-import com.ys.basicandroid.presentaion.ui.search.main.adapter.multitype.ISearchItemViewModel
-import com.ys.basicandroid.presentaion.ui.search.main.event.SearchMainClickEntity
+import com.ys.basicandroid.presentation.ClickEventNotifier
+import com.ys.basicandroid.presentation.ui.search.main.adapter.multitype.ISearchItemViewModel
+import com.ys.basicandroid.presentation.ui.search.main.event.SearchMainClickEntity
 import kotlinx.android.parcel.Parcelize
 import kotlinx.android.parcel.RawValue
 

@@ -133,6 +133,7 @@ dependencies {
     implementation(Depends.AndroidX.constraintLayout)
     implementation(Depends.AndroidX.Activity.activity)
     implementation(Depends.AndroidX.Navigation.fragment)
+    implementation(Depends.AndroidX.Navigation.ui)
     implementation(Depends.material)
     implementation(Depends.threetenabp)
     implementation(Depends.timber)
@@ -143,7 +144,8 @@ dependencies {
     implementation(Depends.Square.okhttp3_logging)
 
     implementation(Depends.Dagger.hiltAndroid)
-    kapt(Depends.Dagger.hiltCompiler)
+	implementation("androidx.preference:preference:1.2.0")
+	kapt(Depends.Dagger.hiltCompiler)
 
     implementation(Depends.Glide.glide)
     kapt(Depends.Glide.compiler)

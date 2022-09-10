@@ -11,6 +11,7 @@ buildscript {
         classpath(Depends.Kotlin.serializationPlugin)
         classpath(Depends.Dagger.hiltGradlePlugin)
         classpath(Depends.AndroidX.Navigation.safeArgs)
+	    classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10")
     }
 }
 
