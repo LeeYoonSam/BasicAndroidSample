@@ -27,6 +27,9 @@ object Depends {
         const val recyclerview = "androidx.recyclerview:recyclerview:1.2.1"
         const val browser = "androidx.browser:browser:1.3.0"
 
+	    private const val startupVersion = "1.1.1"
+        const val startup = "androidx.startup:startup-runtime:$startupVersion"
+
         object Lifecycle {
             private const val lifecycleVersion = "2.4.0"
             const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
