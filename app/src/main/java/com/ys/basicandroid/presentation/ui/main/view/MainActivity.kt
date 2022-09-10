@@ -20,7 +20,9 @@ import com.ys.basicandroid.presentation.ui.main.viewmodel.MainViewModel
 import com.ys.basicandroid.utils.extensions.isGrantedPermission
 import com.ys.basicandroid.utils.extensions.parseUriPackageName
 import com.ys.basicandroid.utils.extensions.permissionRationalOr
+import com.ys.basicandroid.utils.extensions.showToast
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.concurrent.TimeUnit
 import timber.log.Timber
 
 @AndroidEntryPoint
@@ -126,6 +128,27 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 				R.string.cancel
 			) { _, _ -> }
 			show()
+		}
+	}
+
+
+	private val mainId = R.id.menu_home
+	private var backPressedAt: Long = 0
+
+	override fun onBackPressed() {
+		navController.run {
+			if (currentDestination != null && currentDestination?.id != mainId) {
+				binding.bnvMain.selectedItemId = graph.startDestinationId
+
+				return
+			}
+		}
+
+		if (backPressedAt + TimeUnit.SECONDS.toMillis(2) > System.currentTimeMillis()) {
+			finishAffinity()
+		} else {
+			showToast(resources.getString(R.string.app_finish))
+			backPressedAt = System.currentTimeMillis()
 		}
 	}
 }
