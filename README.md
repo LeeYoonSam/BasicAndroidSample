@@ -225,8 +225,22 @@ Given a version number MAJOR.MINOR.PATCH, increment the:
 
 ---
 
+## Custom Template Plugin for Android Studio
+- MVVM 에서 기본적으로 사용하는 View, ViewModel, layout 을 기본으로 생성해주는 Custom Template 추가
+- Plugin Library Path: ./libs/android-mvvm-plugin-template-0.0.1.jar
+
+### 플러그인 설치 방법 (Mac 기준)
+- Android Studio > Preferences.. > Plugins > 오른쪽 상단 톱니바퀴 모양 클릭 > Install Plugin from Disk > jar 파일 선택 > 스튜디오 재시작
+
+### 사용법
+- 생성할 폴더에서 우클릭 > New > Other > Android Fragment MVVM Creator > 정보 입력
+
+---
+
 ## 참고
-[혼자서 Android App 개발하기](https://woowabros.github.io/experience/2020/12/31/developing-an-android-app-in-one-person.html)
-[Architecture Components](https://getstream.io/blog/android-developer-roadmap-part-3/#architecture-components)
-[Introduction to GitLab Flow ALL TIERS](https://docs.gitlab.com/ee/topics/gitlab_flow.html)
-[Git branch 전략(Git-Flow, Github-Flow, Gitlab-Flow)](https://velog.io/@kw2577/Git-branch-%EC%A0%84%EB%9E%B5)
+- [혼자서 Android App 개발하기](https://woowabros.github.io/experience/2020/12/31/developing-an-android-app-in-one-person.html)
+- [Architecture Components](https://getstream.io/blog/android-developer-roadmap-part-3/#architecture-components)
+- [Introduction to GitLab Flow ALL TIERS](https://docs.gitlab.com/ee/topics/gitlab_flow.html)
+- [Git branch 전략(Git-Flow, Github-Flow, Gitlab-Flow)](https://velog.io/@kw2577/Git-branch-%EC%A0%84%EB%9E%B5)
+- [intellij-platform-plugin-template](https://github.com/JetBrains/intellij-platform-plugin-template)
+- [Custom Template Plugin for Android Studio](https://velog.io/@devoks/Custom-Template-Plugin-for-Android-Studio?fbclid=IwAR29yO98ZmX1EeHkTwBPHAT8kq68FiXNLsHKJ8Ayffs0eUpkXWd5IDpCg_Q&mibextid=epqs5l)

@@ -8,6 +8,8 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import com.ys.basicandroid.domain.entity.ActionEntity
+import com.ys.basicandroid.domain.entity.ClickEntity
 
 abstract class BaseFragment<T : ViewDataBinding>(
     @LayoutRes private val layoutId: Int
@@ -34,4 +36,8 @@ abstract class BaseFragment<T : ViewDataBinding>(
     open fun initObserve() {}
 
     open fun initData() {}
+
+	open fun handleSelectEvent(entity: ClickEntity) {}
+
+	open fun handleActionEvent(entity: ActionEntity) {}
 }
