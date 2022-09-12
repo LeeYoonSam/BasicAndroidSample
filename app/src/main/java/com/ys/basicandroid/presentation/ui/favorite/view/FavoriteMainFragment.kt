@@ -1,7 +1,33 @@
 package com.ys.basicandroid.presentation.ui.favorite.view
 
-import com.ys.basicandroid.R
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.ys.basicandroid.databinding.FragmentFavoriteMainBinding
-import com.ys.basicandroid.presentation.base.ui.BaseFragment
+import com.ys.basicandroid.presentation.ui.favorite.viewmodel.FavoriteMainViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-class FavoriteMainFragment : BaseFragment<FragmentFavoriteMainBinding>(R.layout.fragment_favorite_main)
+@AndroidEntryPoint
+class FavoriteMainFragment : Fragment() {
+
+	private lateinit var binding: FragmentFavoriteMainBinding
+
+	private val viewModel by viewModels<FavoriteMainViewModel>()
+
+	override fun onCreateView(
+		inflater: LayoutInflater,
+		container: ViewGroup?,
+		savedInstanceState: Bundle?
+	): View {
+
+		binding = FragmentFavoriteMainBinding.inflate(layoutInflater).apply {
+			lifecycleOwner = viewLifecycleOwner
+			viewModel = this@FavoriteMainFragment.viewModel
+		}
+
+		return binding.root
+	}
+}

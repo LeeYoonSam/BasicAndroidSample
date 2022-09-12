@@ -1,23 +1,45 @@
 package com.ys.basicandroid.presentation.ui.search.detail.view
 
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
-import com.ys.basicandroid.R
 import com.ys.basicandroid.databinding.FragmentBookDetailBinding
-import com.ys.basicandroid.presentation.base.ui.BaseFragment
 import com.ys.basicandroid.presentation.ui.search.detail.viewmodel.BookDetailViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-class BookDetailFragment : BaseFragment<FragmentBookDetailBinding>(R.layout.fragment_book_detail) {
-    private val bookDetailArgs by navArgs<BookDetailFragmentArgs>()
-    private val bookDetailViewModel by viewModels<BookDetailViewModel>()
+@AndroidEntryPoint
+class BookDetailFragment : Fragment() {
 
-    override fun initData() {
-        bookDetailViewModel.setBookInfo(bookDetailArgs.bookInfo)
-    }
+	private lateinit var binding: FragmentBookDetailBinding
 
-    override fun setBind() {
-        binding.run {
-            viewModel = bookDetailViewModel
-        }
-    }
+	private val viewModel by viewModels<BookDetailViewModel>()
+	private val bookDetailArgs by navArgs<BookDetailFragmentArgs>()
+
+	override fun onCreateView(
+		inflater: LayoutInflater,
+		container: ViewGroup?,
+		savedInstanceState: Bundle?
+	): View {
+
+		binding = FragmentBookDetailBinding.inflate(layoutInflater).apply {
+			lifecycleOwner = viewLifecycleOwner
+			viewModel = this@BookDetailFragment.viewModel
+		}
+
+		return binding.root
+	}
+
+	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+		super.onViewCreated(view, savedInstanceState)
+
+		initData()
+	}
+
+	private fun initData() {
+		viewModel.setBookInfo(bookDetailArgs.bookInfo)
+	}
 }
