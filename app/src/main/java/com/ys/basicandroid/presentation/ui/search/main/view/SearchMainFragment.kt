@@ -1,8 +1,13 @@
 package com.ys.basicandroid.presentation.ui.search.main.view
 
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import androidx.core.widget.doAfterTextChanged
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -13,7 +18,6 @@ import com.ys.basicandroid.databinding.FragmentSearchMainBinding
 import com.ys.basicandroid.domain.entity.ActionEntity
 import com.ys.basicandroid.domain.entity.ClickEntity
 import com.ys.basicandroid.domain.model.BookInfoItemViewModel
-import com.ys.basicandroid.presentation.base.ui.BaseFragment
 import com.ys.basicandroid.presentation.ui.search.main.adapter.simple.SearchMainAdapter
 import com.ys.basicandroid.presentation.ui.search.main.event.SearchMainClickEntity.ClickBookInfo
 import com.ys.basicandroid.presentation.ui.search.main.viewmodel.SearchMainViewModel
@@ -31,7 +35,9 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class SearchMainFragment : BaseFragment<FragmentSearchMainBinding>(R.layout.fragment_search_main) {
+class SearchMainFragment : Fragment() {
+
+	private lateinit var binding: FragmentSearchMainBinding
 
     private val searchViewModel by viewModels<SearchMainViewModel>()
 
@@ -47,7 +53,24 @@ class SearchMainFragment : BaseFragment<FragmentSearchMainBinding>(R.layout.frag
     private var debounceJob: Job? = null
     var isClickSearch = false
 
-    override fun setBind() {
+	override fun onCreateView(
+		inflater: LayoutInflater,
+		container: ViewGroup?,
+		savedInstanceState: Bundle?
+	): View {
+
+		binding = FragmentSearchMainBinding.inflate(layoutInflater).apply {
+			lifecycleOwner = viewLifecycleOwner
+			viewModel = this@SearchMainFragment.searchViewModel
+		}
+
+		setBind()
+		initObserve()
+
+		return binding.root
+	}
+
+    private fun setBind() {
         binding.apply {
 
             viewModel = searchViewModel
@@ -97,7 +120,7 @@ class SearchMainFragment : BaseFragment<FragmentSearchMainBinding>(R.layout.frag
         }
     }
 
-	override fun initObserve() {
+	private fun initObserve() {
 		searchViewModel.books.observe(viewLifecycleOwner) { books ->
 			searchAdapter.addItems(books)
 		}
@@ -123,7 +146,7 @@ class SearchMainFragment : BaseFragment<FragmentSearchMainBinding>(R.layout.frag
 		when (entity) {}
 	}
 
-	private fun handleSelectEvent(entity: ClickEntity) {
+	 private fun handleSelectEvent(entity: ClickEntity) {
 		when (entity) {
 			is ClickBookInfo -> {
 				moveBookInfoDetail(entity.bookInfoItemViewModel)
