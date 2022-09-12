@@ -9,12 +9,14 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.ys.basicandroid.R
 import com.ys.basicandroid.databinding.ActivityMainBinding
-import com.ys.basicandroid.presentation.base.ui.BaseActivity
+import com.ys.basicandroid.presentation.base.ui.NetworkHandler
+import com.ys.basicandroid.presentation.base.ui.NetworkHandlerImpl
 import com.ys.basicandroid.presentation.base.ui.PermissionCheckActivity
 import com.ys.basicandroid.presentation.ui.main.viewmodel.MainViewModel
 import com.ys.basicandroid.utils.extensions.isGrantedPermission
@@ -26,8 +28,9 @@ import java.util.concurrent.TimeUnit
 import timber.log.Timber
 
 @AndroidEntryPoint
-class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
+class MainActivity : AppCompatActivity(), NetworkHandler by NetworkHandlerImpl() {
 
+	private lateinit var binding: ActivityMainBinding
     private val viewModel by viewModels<MainViewModel>()
 
 	private lateinit var navController: NavController
@@ -35,9 +38,17 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 
-		setUpNavigation()
+		binding = ActivityMainBinding.inflate(layoutInflater).apply {
+			lifecycleOwner = this@MainActivity
+			viewModel = this@MainActivity.viewModel
+		}
 
-		moveToContactPermissionTest()
+		setContentView(binding.root)
+
+		setNetworkHandler(this, binding.root, this)
+		setUpNavigation()
+		initObserve()
+		initData()
 	}
 
 	private fun setUpNavigation() {
@@ -58,14 +69,16 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 		navController.navigate(destinationId, args)
 	}
 	
-	override fun initObserve() {
+	private fun initObserve() {
 		viewModel.contributors.observe(this) {
 			Timber.d("contributors: $it")
 		}
 	}
 
-	override fun initData() {
+	private fun initData() {
         viewModel.getContributors()
+
+		moveToContactPermissionTest()
     }
 
 	private fun moveToContactPermissionTest() {
