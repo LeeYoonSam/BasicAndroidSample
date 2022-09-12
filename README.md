@@ -235,6 +235,18 @@ Given a version number MAJOR.MINOR.PATCH, increment the:
 ### 사용법
 - 생성할 폴더에서 우클릭 > New > Other > Android Fragment MVVM Creator > 정보 입력
 
+- EntityName 규칙
+    - Mvvm Activity creator
+        - EntityName: FeatureHome 결과
+            - view/FeatureHomeActivity
+            - viewmodel/FeatureHomeViewModel
+            - layout/activity_feature_home
+    - Mvvm Fragment creator
+        - EntityName: FeatureHome 결과
+            - view/FeatureHomeFragment
+            - viewmodel/FeatureHomeViewModel
+            - layout/fragment_feature_home
+
 ---
 
 ## 참고
