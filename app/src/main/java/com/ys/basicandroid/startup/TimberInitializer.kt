@@ -13,7 +13,5 @@ class TimberInitializer : Initializer<Unit> {
 		}
 	}
 
-	override fun dependencies(): List<Class<out Initializer<*>>> {
-		return listOf(ThreeTenInitializer::class.java)
-	}
+	override fun dependencies(): List<Class<out Initializer<*>>> = emptyList()
 }
