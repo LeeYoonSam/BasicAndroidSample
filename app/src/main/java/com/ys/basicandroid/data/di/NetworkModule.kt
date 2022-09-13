@@ -46,12 +46,14 @@ object NetworkModule {
             )
             .build()
 
-    @OptIn(ExperimentalSerializationApi::class)
+	private val jsonBuilder = Json {
+		ignoreUnknownKeys = true
+	}
+
+	@OptIn(ExperimentalSerializationApi::class)
     @Provides
     fun provideConvert(): Converter.Factory {
-        return Json {
-            ignoreUnknownKeys = true
-        }.asConverterFactory("application/json".toMediaType())
+        return jsonBuilder.asConverterFactory("application/json".toMediaType())
     }
 
     @Provides
