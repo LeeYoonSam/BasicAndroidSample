@@ -46,7 +46,11 @@ class MainActivity : AppCompatActivity(), NetworkHandler by NetworkHandlerImpl()
 		setContentView(binding.root)
 
 		setNetworkHandler(this, binding.root, this)
-		setUpNavigation()
+
+		if (savedInstanceState == null) {
+			setUpNavigation()
+		}
+
 		initObserve()
 		initData()
 	}
