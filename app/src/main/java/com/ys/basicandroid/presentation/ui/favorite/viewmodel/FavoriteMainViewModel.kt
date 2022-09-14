@@ -1,6 +1,6 @@
 package com.ys.basicandroid.presentation.ui.favorite.viewmodel
 
-import com.ys.basicandroid.presentation.base.ui.BaseViewModel
+import com.ys.basicandroid.presentation.base.viewmodel.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

@@ -2,7 +2,7 @@ package com.ys.basicandroid.presentation.ui.search.detail.viewmodel
 
 import androidx.databinding.ObservableField
 import com.ys.basicandroid.domain.model.BookInfoItemViewModel
-import com.ys.basicandroid.presentation.base.ui.BaseViewModel
+import com.ys.basicandroid.presentation.base.viewmodel.BaseViewModel
 
 class BookDetailViewModel : BaseViewModel() {
 

@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.ys.basicandroid.domain.Result
 import com.ys.basicandroid.domain.getOrDefault
 import com.ys.basicandroid.domain.github.GetContributorsUseCase
-import com.ys.basicandroid.presentation.base.ui.BaseViewModel
+import com.ys.basicandroid.presentation.base.viewmodel.BaseViewModel
 import com.ys.basicandroid.shared.model.User
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject

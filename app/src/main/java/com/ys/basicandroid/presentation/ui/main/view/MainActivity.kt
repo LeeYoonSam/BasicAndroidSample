@@ -15,9 +15,9 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.ys.basicandroid.R
 import com.ys.basicandroid.databinding.ActivityMainBinding
-import com.ys.basicandroid.presentation.base.ui.NetworkHandler
-import com.ys.basicandroid.presentation.base.ui.NetworkHandlerImpl
-import com.ys.basicandroid.presentation.base.ui.PermissionCheckActivity
+import com.ys.basicandroid.presentation.base.viewmodel.NetworkHandler
+import com.ys.basicandroid.presentation.base.viewmodel.NetworkHandlerImpl
+import com.ys.basicandroid.presentation.common.activity.PermissionCheckActivity
 import com.ys.basicandroid.presentation.ui.main.viewmodel.MainViewModel
 import com.ys.basicandroid.utils.extensions.isGrantedPermission
 import com.ys.basicandroid.utils.extensions.parseUriPackageName

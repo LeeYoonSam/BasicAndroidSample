@@ -1,4 +1,4 @@
-package com.ys.basicandroid.presentation.res
+package com.ys.basicandroid.presentation.base.res
 
 import androidx.annotation.StringRes
 

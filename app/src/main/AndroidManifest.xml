@@ -26,7 +26,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".presentation.base.ui.PermissionCheckActivity"/>
+        <activity android:name=".presentation.common.activity.PermissionCheckActivity"/>
 
         <provider
             android:name="androidx.startup.InitializationProvider"

@@ -8,7 +8,7 @@ import com.ys.basicandroid.domain.book.SearchBooksInfoUseCase
 import com.ys.basicandroid.domain.book.SearchBooksInfoUseCase.Params
 import com.ys.basicandroid.domain.model.BookInfoItemViewModel
 import com.ys.basicandroid.domain.model.PagingMeta
-import com.ys.basicandroid.presentation.base.ui.BaseViewModel
+import com.ys.basicandroid.presentation.base.viewmodel.BaseViewModel
 import com.ys.basicandroid.utils.extensions.orFalse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject

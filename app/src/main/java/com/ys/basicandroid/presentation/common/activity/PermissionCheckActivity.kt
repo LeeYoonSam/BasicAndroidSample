@@ -1,4 +1,4 @@
-package com.ys.basicandroid.presentation.base.ui
+package com.ys.basicandroid.presentation.common.activity
 
 import android.content.Context
 import android.content.Intent

@@ -1,4 +1,4 @@
-package com.ys.basicandroid.presentation.base.ui
+package com.ys.basicandroid.presentation.base.viewmodel
 
 import android.content.Context
 import android.net.ConnectivityManager

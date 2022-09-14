@@ -1,7 +1,7 @@
 package com.ys.basicandroid.utils.time
 
 import com.ys.basicandroid.R
-import com.ys.basicandroid.presentation.res.IStringResourceGetter
+import com.ys.basicandroid.presentation.base.res.IStringResourceGetter
 
 abstract class TimeStringBaseProvider : IStringResourceGetter {
     enum class Code {

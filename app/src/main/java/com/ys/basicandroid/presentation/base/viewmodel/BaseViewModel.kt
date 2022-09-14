@@ -1,12 +1,12 @@
-package com.ys.basicandroid.presentation.base.ui
+package com.ys.basicandroid.presentation.base.viewmodel
 
 import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.ViewModel
 import com.ys.basicandroid.domain.entity.ActionEntity
 import com.ys.basicandroid.domain.entity.ClickEntity
 import com.ys.basicandroid.presentation.ClickActionEventNotifier
-import com.ys.basicandroid.presentation.event.BaseEvent
-import com.ys.basicandroid.presentation.event.IBaseEvent
+import com.ys.basicandroid.presentation.base.event.BaseEvent
+import com.ys.basicandroid.presentation.base.event.IBaseEvent
 
 abstract class BaseViewModel : ViewModel(), ClickActionEventNotifier {
 

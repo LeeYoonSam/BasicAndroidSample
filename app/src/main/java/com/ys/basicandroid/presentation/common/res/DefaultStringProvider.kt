@@ -1,13 +1,13 @@
-package com.ys.basicandroid.presentation.ui.search.main.viewmodel
+package com.ys.basicandroid.presentation.common.res
 
 import android.content.Context
 import com.ys.basicandroid.R
 import com.ys.basicandroid.presentation.base.res.IStringResourceGetter
-import com.ys.basicandroid.presentation.ui.search.main.viewmodel.SearchMainStringProvider.Code.ERROR_DEFAULT
+import com.ys.basicandroid.presentation.common.res.DefaultStringProvider.Code.ERROR_DEFAULT
 import javax.inject.Inject
 
-class SearchMainStringProvider @Inject constructor(private val context: Context):
-    IStringResourceGetter {
+class DefaultStringProvider @Inject constructor(private val context: Context):
+	IStringResourceGetter {
 
     enum class Code {
         ERROR_DEFAULT,

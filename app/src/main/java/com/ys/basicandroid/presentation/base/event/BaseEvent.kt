@@ -1,4 +1,4 @@
-package com.ys.basicandroid.presentation.event
+package com.ys.basicandroid.presentation.base.event
 
 import com.ys.basicandroid.domain.entity.ActionEntity
 import com.ys.basicandroid.domain.entity.ClickEntity
