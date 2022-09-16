@@ -4,7 +4,7 @@ import com.ys.basicandroid.MainCoroutineRule
 import com.ys.basicandroid.data.repository.GithubRepository
 import com.ys.basicandroid.domain.Result
 import com.ys.basicandroid.domain.github.GetContributorsUseCase.Param
-import com.ys.basicandroid.shared.model.User
+import com.ys.basicandroid.common.model.User
 import kotlinx.coroutines.runBlocking
 
 import org.junit.Assert.*

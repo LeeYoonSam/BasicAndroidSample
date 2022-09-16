@@ -1,4 +1,4 @@
-package com.ys.basicandroid.shared.model
+package com.ys.basicandroid.common.model
 
 import kotlinx.serialization.Serializable
 

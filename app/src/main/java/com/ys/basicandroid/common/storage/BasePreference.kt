@@ -1,4 +1,4 @@
-package com.ys.basicandroid.shared.storage
+package com.ys.basicandroid.common.storage
 
 interface BasePreference {
     fun put(key: String, value: String?)

@@ -1,9 +1,9 @@
-package com.ys.basicandroid.shared.di
+package com.ys.basicandroid.common.di
 
-import com.ys.basicandroid.shared.DefaultDispatcher
-import com.ys.basicandroid.shared.IoDispatcher
-import com.ys.basicandroid.shared.MainDispatcher
-import com.ys.basicandroid.shared.MainImmediateDispatcher
+import com.ys.basicandroid.common.DefaultDispatcher
+import com.ys.basicandroid.common.IoDispatcher
+import com.ys.basicandroid.common.MainDispatcher
+import com.ys.basicandroid.common.MainImmediateDispatcher
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

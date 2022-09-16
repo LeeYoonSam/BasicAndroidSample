@@ -1,4 +1,4 @@
-package com.ys.basicandroid.shared.di
+package com.ys.basicandroid.common.di
 
 import android.app.Application
 import android.content.Context

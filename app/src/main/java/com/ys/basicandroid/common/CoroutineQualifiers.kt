@@ -1,4 +1,4 @@
-package com.ys.basicandroid.shared
+package com.ys.basicandroid.common
 
 import javax.inject.Qualifier
 

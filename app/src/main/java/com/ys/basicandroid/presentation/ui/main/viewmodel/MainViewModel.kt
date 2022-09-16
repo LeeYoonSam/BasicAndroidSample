@@ -7,7 +7,7 @@ import com.ys.basicandroid.domain.Result
 import com.ys.basicandroid.domain.getOrDefault
 import com.ys.basicandroid.domain.github.GetContributorsUseCase
 import com.ys.basicandroid.presentation.base.viewmodel.BaseViewModel
-import com.ys.basicandroid.shared.model.User
+import com.ys.basicandroid.common.model.User
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.launch

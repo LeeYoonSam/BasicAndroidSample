@@ -5,7 +5,7 @@ import com.ys.basicandroid.domain.UseCase
 import com.ys.basicandroid.domain.book.SearchBooksInfoUseCase.Params
 import com.ys.basicandroid.domain.model.SearchBooksData
 import com.ys.basicandroid.presentation.ClickEventNotifier
-import com.ys.basicandroid.shared.IoDispatcher
+import com.ys.basicandroid.common.IoDispatcher
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineDispatcher
 
