@@ -9,6 +9,8 @@ plugins {
     id("dagger.hilt.android.plugin")
     id("androidx.navigation.safeargs.kotlin")
 	id("io.gitlab.arturbosch.detekt") version "1.16.0"
+	id("com.google.gms.google-services")
+	id("com.google.firebase.crashlytics")
 }
 
 /**
@@ -150,6 +152,11 @@ dependencies {
 
     implementation(Depends.Glide.glide)
     kapt(Depends.Glide.compiler)
+
+	// Firebase
+	implementation(platform(Depends.Firebase.firebaseBom))
+	implementation(Depends.Firebase.firebaseCrashlyticsKtx)
+	implementation(Depends.Firebase.firebaseAnalyticsKtx)
 
     ktlint(Depends.Lint.ktlint)
     detektPlugins(Depends.Lint.detektFormatting)
