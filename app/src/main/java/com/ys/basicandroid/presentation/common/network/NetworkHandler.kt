@@ -1,4 +1,4 @@
-package com.ys.basicandroid.presentation.base.viewmodel
+package com.ys.basicandroid.presentation.common.network
 
 import android.content.Context
 import android.net.ConnectivityManager
@@ -13,7 +13,7 @@ import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
 import com.google.android.material.snackbar.Snackbar
 import com.ys.basicandroid.R
-import timber.log.Timber
+import com.ys.basicandroid.common.log.L
 
 interface NetworkHandler {
 	fun setNetworkHandler(
@@ -84,12 +84,12 @@ class NetworkHandlerImpl : NetworkHandler, LifecycleEventObserver {
 		when (event) {
 			Event.ON_START -> {
 				registerNetworkCallback()
-				Timber.d("Event.ON_START")
+				L.d("Event.ON_START")
 			}
 
 			Event.ON_STOP -> {
 				unRegisterNetworkCallback()
-				Timber.d("Event.ON_STOP")
+				L.d("Event.ON_STOP")
 			}
 		}
 	}

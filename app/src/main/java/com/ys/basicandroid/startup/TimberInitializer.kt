@@ -2,15 +2,12 @@ package com.ys.basicandroid.startup
 
 import android.content.Context
 import androidx.startup.Initializer
-import com.ys.basicandroid.BuildConfig
-import timber.log.Timber
+import com.ys.basicandroid.common.log.L
 
 class TimberInitializer : Initializer<Unit> {
 
 	override fun create(context: Context) {
-		if (BuildConfig.DEBUG) {
-			Timber.plant(Timber.DebugTree())
-		}
+		L.init()
 	}
 
 	override fun dependencies(): List<Class<out Initializer<*>>> = emptyList()

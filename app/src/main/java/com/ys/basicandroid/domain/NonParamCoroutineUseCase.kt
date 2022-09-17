@@ -1,8 +1,8 @@
 package com.ys.basicandroid.domain
 
+import com.ys.basicandroid.common.log.L
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
-import timber.log.Timber
 
 abstract class NonParamCoroutineUseCase<R>(private val coroutineDispatcher: CoroutineDispatcher) {
     suspend operator fun invoke(): Result<R> {
@@ -13,7 +13,7 @@ abstract class NonParamCoroutineUseCase<R>(private val coroutineDispatcher: Coro
                 }
             }
         } catch (e: Exception) {
-            Timber.e(e)
+            L.e(e)
             Result.Error(e)
         }
     }

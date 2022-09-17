@@ -1,10 +1,10 @@
 package com.ys.basicandroid.utils.time
 
+import com.ys.basicandroid.common.log.L
 import org.threeten.bp.Instant
 import org.threeten.bp.ZoneId
 import org.threeten.bp.ZonedDateTime
 import org.threeten.bp.format.DateTimeFormatter
-import timber.log.Timber
 
 object TimeUtils {
     private const val SEC = 60
@@ -143,7 +143,7 @@ object TimeUtils {
     fun zonedDateTimeToLocalDate(zonedDateTime: String) = try {
         ZonedDateTime.parse(zonedDateTime).toLocalDate().toString()
     } catch (e: Exception) {
-        Timber.e(e)
+        L.e(e)
         ""
     }
 }

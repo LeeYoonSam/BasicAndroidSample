@@ -1,8 +1,8 @@
 package com.ys.basicandroid.domain
 
+import com.ys.basicandroid.common.log.L
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
-import timber.log.Timber
 
 ///////////////////////////////////////////////////////////////////////////
 // Origin Source : https://github.com/google/iosched/blob/main/shared/src/main/java/com/google/samples/apps/iosched/shared/domain/CoroutineUseCase.kt
@@ -29,7 +29,7 @@ abstract class UseCase<in P, R>(private val coroutineDispatcher: CoroutineDispat
                 }
             }
         } catch (e: Exception) {
-            Timber.d(e)
+            L.e(e)
             Result.Error(e)
         }
     }
