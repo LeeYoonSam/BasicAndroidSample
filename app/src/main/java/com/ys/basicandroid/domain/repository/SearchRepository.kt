@@ -1,4 +1,4 @@
-package com.ys.basicandroid.data.repository
+package com.ys.basicandroid.domain.repository
 
 import com.ys.basicandroid.domain.book.SearchBooksInfoUseCase.Params
 import com.ys.basicandroid.domain.model.SearchBooksData

@@ -27,6 +27,7 @@
         </activity>
 
         <activity android:name=".presentation.common.activity.PermissionCheckActivity"/>
+        <activity android:name=".presentation.ui.signin.view.SignInActivity"/>
 
         <provider
             android:name="androidx.startup.InitializationProvider"

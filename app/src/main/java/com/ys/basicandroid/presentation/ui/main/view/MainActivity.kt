@@ -80,8 +80,7 @@ class MainActivity : AppCompatActivity(), NetworkHandler by NetworkHandlerImpl()
 	}
 
 	private fun initData() {
-        viewModel.getContributors()
-
+		viewModel.getContributors()
 		moveToContactPermissionTest()
     }
 

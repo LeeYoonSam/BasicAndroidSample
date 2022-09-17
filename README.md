@@ -188,7 +188,10 @@ Given a version number MAJOR.MINOR.PATCH, increment the:
 - Glide: 이미지 로딩 라이브러리
 - Retrofit2 & OkHttp3: REST API 네트워크 데이터를 구성합니다.
 - Timber: 유틸리티를 제공하는 작고 확장 가능한 API가 있는 로거.
-
+- Firebse
+    - Crashlytics: App Crash Report
+    - Analytics: APP 분석
+    - Authentication: 인증
 ---
 
 ## 🏛️ Architecture
@@ -247,6 +250,19 @@ Given a version number MAJOR.MINOR.PATCH, increment the:
             - viewmodel/FeatureHomeViewModel
             - layout/fragment_feature_home
 
+---
+
+## Firebase Google Authentication
+
+### Sign-in-method 구글 설정
+- [디지털 지문 추가](https://developers.google.com/android/guides/client-auth?authuser=0&hl=ko)
+    - 프로젝트 설정에서 SHA-1 인증서를 구성
+
+### 참고
+[Firebase Google Login 연동하기](https://jamie-dev.tistory.com/128)
+[Firebase Android Codelab - 친근한 채팅 구축](https://firebase.google.com/codelabs/firebase-android?authuser=0&hl=ko#5)
+[alexmamo/FirebaseSignInWithGoogle](https://github.com/alexmamo/FirebaseSignInWithGoogle)
+[저장된 자격 증명으로 사용자 로그인](https://developers.google.com/identity/one-tap/android/get-saved-credentials)
 ---
 
 ## 참고

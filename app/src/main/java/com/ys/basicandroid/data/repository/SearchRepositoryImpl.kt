@@ -3,6 +3,7 @@ package com.ys.basicandroid.data.repository
 import com.ys.basicandroid.data.api.KakaoApi
 import com.ys.basicandroid.domain.book.SearchBooksInfoUseCase.Params
 import com.ys.basicandroid.domain.model.SearchBooksData
+import com.ys.basicandroid.domain.repository.SearchRepository
 import com.ys.basicandroid.presentation.ui.search.main.viewmodel.SearchViewModelMapper
 import javax.inject.Inject
 

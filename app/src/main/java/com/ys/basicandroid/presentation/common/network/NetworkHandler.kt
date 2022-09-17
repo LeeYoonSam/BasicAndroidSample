@@ -91,6 +91,8 @@ class NetworkHandlerImpl : NetworkHandler, LifecycleEventObserver {
 				unRegisterNetworkCallback()
 				L.d("Event.ON_STOP")
 			}
+
+			else -> {}
 		}
 	}
 }

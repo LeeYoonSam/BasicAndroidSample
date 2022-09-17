@@ -1,8 +1,8 @@
 package com.ys.basicandroid.data.di
 
 import com.ys.basicandroid.data.repository.GithubRepositoryImpl
-import com.ys.basicandroid.data.repository.GithubRepository
-import com.ys.basicandroid.data.repository.SearchRepository
+import com.ys.basicandroid.domain.repository.GithubRepository
+import com.ys.basicandroid.domain.repository.SearchRepository
 import com.ys.basicandroid.data.repository.SearchRepositoryImpl
 import dagger.Binds
 import dagger.Module

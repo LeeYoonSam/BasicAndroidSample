@@ -157,6 +157,14 @@ dependencies {
 	implementation(platform(Depends.Firebase.firebaseBom))
 	implementation(Depends.Firebase.firebaseCrashlyticsKtx)
 	implementation(Depends.Firebase.firebaseAnalyticsKtx)
+	implementation(Depends.Firebase.firebaseAuthKtx)
+	implementation(Depends.Firebase.firebaseFireStoreKtx)
+
+	// Firebase Auth
+	implementation(Depends.Firebase.playServicesAuth)
+	implementation(Depends.Firebase.firebaseUi)
+
+	implementation(Depends.Kotlin.coroutinePlayServices)
 
     ktlint(Depends.Lint.ktlint)
     detektPlugins(Depends.Lint.detektFormatting)

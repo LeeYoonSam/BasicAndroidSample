@@ -9,7 +9,7 @@ object Versions {
 }
 
 object Depends {
-    const val androidGradlePlugin = "com.android.tools.build:gradle:7.1.3"
+    const val androidGradlePlugin = "com.android.tools.build:gradle:7.2.2"
 
     object AndroidX {
         const val core = "androidx.core:core-ktx:1.6.0"
@@ -47,7 +47,7 @@ object Depends {
     }
 
     object Kotlin {
-        private const val kotlinVersion = "1.6.21"
+        private const val kotlinVersion = "1.7.10"
         const val coroutineVersion = "1.6.4"
 
         const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
@@ -55,6 +55,9 @@ object Depends {
         const val dateTime = "org.jetbrains.kotlinx:kotlinx-datetime:0.4.0"
         const val serialization = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.1"
         const val serializationPlugin = "org.jetbrains.kotlin:kotlin-serialization:$kotlinVersion"
+
+	    private const val coroutinePlayServicesVersion = "1.6.4"
+	    const val coroutinePlayServices = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$coroutinePlayServicesVersion"
 
         object Test {
             const val coroutineTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutineVersion"
@@ -104,6 +107,17 @@ object Depends {
 		// When using the BoM, you don't specify versions in Firebase library dependencies
 		const val firebaseCrashlyticsKtx = "com.google.firebase:firebase-crashlytics-ktx"
 		const val firebaseAnalyticsKtx = "com.google.firebase:firebase-analytics-ktx"
+		const val firebaseAuthKtx = "com.google.firebase:firebase-auth-ktx"
+		const val firebaseFireStoreKtx = "com.google.firebase:firebase-firestore-ktx"
+
+		// Google Sign In SDK
+		private const val playServicesAuthVersion = "20.2.0"
+		const val playServicesAuth = "com.google.android.gms:play-services-auth:$playServicesAuthVersion"
+
+		// Firebase UI Library
+		private const val firebaseUiVersion = "8.0.1"
+		const val firebaseUi = "com.firebaseui:firebase-ui-auth:$firebaseUiVersion"
+		const val firebaseUiDatabase = "com.firebaseui:firebase-ui-database:$firebaseUiVersion"
 	}
 
     const val material = "com.google.android.material:material:1.3.0"

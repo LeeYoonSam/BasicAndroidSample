@@ -2,6 +2,7 @@ package com.ys.basicandroid.data.repository
 
 import com.ys.basicandroid.data.api.GithubApi
 import com.ys.basicandroid.common.model.User
+import com.ys.basicandroid.domain.repository.GithubRepository
 import javax.inject.Inject
 
 class GithubRepositoryImpl @Inject constructor(

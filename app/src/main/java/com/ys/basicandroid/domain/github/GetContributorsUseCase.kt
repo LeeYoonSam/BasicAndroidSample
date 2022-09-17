@@ -1,6 +1,6 @@
 package com.ys.basicandroid.domain.github
 
-import com.ys.basicandroid.data.repository.GithubRepository
+import com.ys.basicandroid.domain.repository.GithubRepository
 import com.ys.basicandroid.domain.UseCase
 import com.ys.basicandroid.common.IoDispatcher
 import com.ys.basicandroid.common.model.User

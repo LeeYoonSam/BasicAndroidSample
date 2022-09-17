@@ -174,7 +174,7 @@ class SearchMainFragment : Fragment() {
             if (searchText == previousSearchText)
                 return@doAfterTextChanged
 
-            previousSearchText = searchText
+	        previousSearchText = searchText
 
 	        lifecycleScope.launch {
 
