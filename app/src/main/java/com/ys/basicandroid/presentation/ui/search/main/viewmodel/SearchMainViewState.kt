@@ -4,4 +4,5 @@ import androidx.databinding.ObservableBoolean
 
 class SearchMainViewState {
     val hasBooks = ObservableBoolean(false)
+	val isLoggedIn = ObservableBoolean(false)
 }

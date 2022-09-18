@@ -263,6 +263,8 @@ Given a version number MAJOR.MINOR.PATCH, increment the:
 [Firebase Android Codelab - 친근한 채팅 구축](https://firebase.google.com/codelabs/firebase-android?authuser=0&hl=ko#5)
 [alexmamo/FirebaseSignInWithGoogle](https://github.com/alexmamo/FirebaseSignInWithGoogle)
 [저장된 자격 증명으로 사용자 로그인](https://developers.google.com/identity/one-tap/android/get-saved-credentials)
+    - 비밀번호 대용 Smart Lock을 Android 앱에 통합하면 사용자가 저장한 사용자 인증 정보를 사용하여 앱에 자동으로 로그인
+
 ---
 
 ## 참고

@@ -9,6 +9,7 @@ import com.ys.basicandroid.domain.book.SearchBooksInfoUseCase.Params
 import com.ys.basicandroid.domain.model.BookInfoItemViewModel
 import com.ys.basicandroid.domain.model.PagingMeta
 import com.ys.basicandroid.presentation.base.viewmodel.BaseViewModel
+import com.ys.basicandroid.presentation.ui.search.main.event.SearchMainClickEntity
 import com.ys.basicandroid.utils.extensions.orFalse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -27,6 +28,38 @@ class SearchMainViewModel @Inject constructor(
 
     private var query: String = ""
     private var meta = PagingMeta(false)
+
+	private var userInfo: UserInfo? = null
+		private set(value) {
+			field = value
+			updateUserInfo()
+		}
+
+	data class UserInfo(
+		val idToken: String,
+		val username: String,
+		val password: String
+	)
+
+	fun saveUserInfo(
+		idToken: String,
+		username: String,
+		password: String
+	) {
+		userInfo = UserInfo(
+			idToken = idToken,
+			username = username,
+			password = password
+		)
+	}
+
+	fun removeUserInfo() {
+		userInfo = null
+	}
+
+	private fun updateUserInfo() {
+		viewState.isLoggedIn.set(userInfo != null)
+	}
 
     /**
      * UseCase 를 통해서 API 에서 검색 데이터 및 meta 정보를 전달 받음
@@ -127,4 +160,12 @@ class SearchMainViewModel @Inject constructor(
     private fun initMetaData() {
         meta = PagingMeta(false)
     }
+
+	fun onClickGoogleLogin() {
+		val isLoggedIn = viewState.isLoggedIn.get()
+
+		notifyClickEvent(
+			SearchMainClickEntity.GoogleLogin(isLoggedIn)
+		)
+	}
 }

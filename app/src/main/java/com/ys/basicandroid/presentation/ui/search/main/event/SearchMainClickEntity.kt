@@ -5,4 +5,5 @@ import com.ys.basicandroid.domain.model.BookInfoItemViewModel
 
 sealed class SearchMainClickEntity : ClickEntity() {
 	data class ClickBookInfo(val bookInfoItemViewModel: BookInfoItemViewModel) : SearchMainClickEntity()
+	data class GoogleLogin(val isLoggedIn: Boolean) : SearchMainClickEntity()
 }
