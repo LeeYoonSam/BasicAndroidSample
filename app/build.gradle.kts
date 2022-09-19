@@ -34,6 +34,7 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField("String", "KAKAO_REST_API_AUTHORIZATION", "\"KakaoAK 7a7ffc08770c2956edc43bc7425a6676\"")
+        buildConfigField("String", "GOOGLE_WEB_CLIENT_ID", "\"10397444156-k4ssucbiqjp7nrffaf8re4o3e9v26bf3.apps.googleusercontent.com\"")
     }
 
     buildTypes {

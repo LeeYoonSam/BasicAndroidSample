@@ -1,15 +1,11 @@
 package com.ys.basicandroid.presentation.ui.search.main.view
 
-import android.content.IntentSender
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.IntentSenderRequest
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -17,13 +13,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.OnScrollListener
-import com.google.android.gms.auth.api.identity.BeginSignInRequest
-import com.google.android.gms.auth.api.identity.Identity
-import com.google.android.gms.auth.api.identity.SignInClient
-import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.common.api.CommonStatusCodes
 import com.ys.basicandroid.R
-import com.ys.basicandroid.common.log.L
+import com.ys.basicandroid.common.authentication.manager.LoginManager
+import com.ys.basicandroid.common.authentication.observeChangedLogin
 import com.ys.basicandroid.databinding.FragmentSearchMainBinding
 import com.ys.basicandroid.domain.entity.ActionEntity
 import com.ys.basicandroid.domain.entity.ClickEntity
@@ -64,29 +56,7 @@ class SearchMainFragment : Fragment() {
     private var debounceJob: Job? = null
     var isClickSearch = false
 
-	private val oneTapClient: SignInClient by lazy {
-		Identity.getSignInClient(requireActivity())
-	}
-
-	private val signInRequest: BeginSignInRequest by lazy {
-		BeginSignInRequest.builder()
-			.setPasswordRequestOptions(BeginSignInRequest.PasswordRequestOptions.builder()
-				.setSupported(true)
-				.build()
-			)
-			.setGoogleIdTokenRequestOptions(
-				BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
-					.setSupported(true)
-					// Your server's client ID, not your Android client ID.
-					.setServerClientId(getString(R.string.google_web_client_id))
-					// Only show accounts previously used to sign in.
-					.setFilterByAuthorizedAccounts(true)
-					.build()
-			)
-			// Automatically sign in when exactly one credential is retrieved.
-			.setAutoSelectEnabled(true)
-			.build()
-	}
+	private lateinit var loginManager: LoginManager
 
 	override fun onCreateView(
 		inflater: LayoutInflater,
@@ -107,6 +77,8 @@ class SearchMainFragment : Fragment() {
 
 		setBind()
 		initObserve()
+
+		loginManager = LoginManager(this)
 	}
 
     private fun setBind() {
@@ -134,40 +106,6 @@ class SearchMainFragment : Fragment() {
             }
         }
     }
-
-	private fun beginSignIn() {
-		oneTapClient.beginSignIn(signInRequest)
-			.addOnSuccessListener(requireActivity()) { result ->
-				try {
-
-					val intentSenderRequest: IntentSenderRequest =
-						IntentSenderRequest
-							.Builder(result.pendingIntent.intentSender)
-							.build()
-
-					signInLauncher.launch(intentSenderRequest)
-				} catch (e: IntentSender.SendIntentException) {
-					L.e("Couldn't start One Tap UI: ${e.localizedMessage}")
-				}
-			}
-			.addOnFailureListener(requireActivity()) { e ->
-				// No saved credentials found. Launch the One Tap sign-up flow, or
-				// do nothing and continue presenting the signed-out UI.
-				L.d(e.localizedMessage)
-			}
-	}
-
-	private fun signOut() {
-		oneTapClient.signOut()
-			.addOnSuccessListener {
-				searchViewModel.removeUserInfo()
-			}
-			.addOnFailureListener(requireActivity()) { e ->
-				// No saved credentials found. Launch the One Tap sign-up flow, or
-				// do nothing and continue presenting the signed-out UI.
-				L.d(e.localizedMessage)
-			}
-	}
 
     private fun clearAndSearch(query: String) {
         debounceJob?.cancel()
@@ -212,6 +150,9 @@ class SearchMainFragment : Fragment() {
 				showToast(getString(R.string.error_default))
 			}
 		}
+		observeChangedLogin {
+			searchViewModel.updateUserInfo()
+		}
 	}
 
 	private fun handleActionEvent(entity: ActionEntity) {
@@ -226,11 +167,12 @@ class SearchMainFragment : Fragment() {
 
 			is SearchMainClickEntity.GoogleLogin -> {
 				if (entity.isLoggedIn) {
-					signOut()
+					loginManager.signOut {
+						searchViewModel.updateUserInfo()
+					}
 				} else {
-					beginSignIn()
+					loginManager.beginSignIn()
 				}
-
 			}
 		}
 	}
@@ -251,7 +193,7 @@ class SearchMainFragment : Fragment() {
         doAfterTextChanged {
             isClickSearch = false
 
-            val searchText = it.toString().trim()
+	        val searchText = it.toString().trim()
 	        if (searchText == previousSearchText)
                 return@doAfterTextChanged
 
@@ -301,62 +243,4 @@ class SearchMainFragment : Fragment() {
         endlessRecyclerScrollListener.refresh()
         searchAdapter.clear()
     }
-
-	private var showOneTapUI = true
-
-	private val signInLauncher =
-		registerForActivityResult(
-			ActivityResultContracts.StartIntentSenderForResult()
-		) { result: ActivityResult ->
-			try {
-				val credential = oneTapClient.getSignInCredentialFromIntent(result.data)
-				val idToken = credential.googleIdToken
-				val username = credential.id
-				val password = credential.password
-
-				searchViewModel.saveUserInfo(
-					idToken = idToken.orEmpty(),
-					username = username,
-					password = password.orEmpty()
-				)
-
-				when {
-					idToken != null -> {
-						// Got an ID token from Google. Use it to authenticate
-						// with your backend.
-						L.d("Got ID token: $idToken")
-					}
-					username != null -> {
-						L.d("Got username: $username")
-					}
-					password != null -> {
-						// Got a saved username and password. Use them to authenticate
-						// with your backend.
-						L.d("Got password: $password")
-					}
-					else -> {
-						// Shouldn't happen.
-						L.d("No ID token or password!")
-					}
-				}
-			} catch (e: ApiException) {
-				when (e.statusCode) {
-					CommonStatusCodes.CANCELED -> {
-						L.d("One-tap dialog was closed.")
-						// Don't re-prompt the user.
-						showOneTapUI = false
-					}
-					CommonStatusCodes.NETWORK_ERROR -> {
-						L.d("One-tap encountered a network error.")
-						// Try again or just ignore.
-					}
-					else -> {
-						L.d(
-							"Couldn't get credential from result." +
-								" (${e.localizedMessage})"
-						)
-					}
-				}
-			}
-		}
 }

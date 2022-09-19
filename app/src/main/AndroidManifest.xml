@@ -40,6 +40,9 @@
             <meta-data
                 android:name="com.ys.basicandroid.startup.ThreeTenInitializer"
                 android:value="androidx.startup" />
+            <meta-data
+                android:name="com.ys.basicandroid.startup.AppInitializer"
+                android:value="androidx.startup" />
         </provider>
 
     </application>

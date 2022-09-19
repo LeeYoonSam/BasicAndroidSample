@@ -3,6 +3,8 @@ package com.ys.basicandroid.presentation.ui.search.main.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.ys.basicandroid.common.authentication.manager.UserInfoManager
+import com.ys.basicandroid.common.log.L
 import com.ys.basicandroid.domain.Result
 import com.ys.basicandroid.domain.book.SearchBooksInfoUseCase
 import com.ys.basicandroid.domain.book.SearchBooksInfoUseCase.Params
@@ -29,36 +31,13 @@ class SearchMainViewModel @Inject constructor(
     private var query: String = ""
     private var meta = PagingMeta(false)
 
-	private var userInfo: UserInfo? = null
-		private set(value) {
-			field = value
-			updateUserInfo()
-		}
-
-	data class UserInfo(
-		val idToken: String,
-		val username: String,
-		val password: String
-	)
-
-	fun saveUserInfo(
-		idToken: String,
-		username: String,
-		password: String
-	) {
-		userInfo = UserInfo(
-			idToken = idToken,
-			username = username,
-			password = password
-		)
+	init {
+		updateUserInfo()
+		L.i("idToken: ${UserInfoManager.getIdToken()}")
 	}
 
-	fun removeUserInfo() {
-		userInfo = null
-	}
-
-	private fun updateUserInfo() {
-		viewState.isLoggedIn.set(userInfo != null)
+	fun updateUserInfo() {
+		viewState.isLoggedIn.set(UserInfoManager.isLoggedIn())
 	}
 
     /**
